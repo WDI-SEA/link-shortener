@@ -19,7 +19,7 @@ http://bit.ly/shortysbelltown
 * https://goo.gl/
 * http://bitly.com
 
-**NOTE:** For this assignment, create a new Github repository, clone it to your computer, and create your project in there. For HW submission, submit a text file with a link to the repository.
+**NOTE:** For this assignment, fork and clone this repository your computer, and run `npm init` in the folder to being the project.
 
 ##User Experience
 
