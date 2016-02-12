@@ -19,6 +19,17 @@ http://bit.ly/shortysbelltown
 * https://goo.gl/
 * http://bitly.com
 
+Note that a link shortener utilizes a common data structure called a **map**. Maps are a mathematical idea that "map" items between two sets, similar to objects in JavaScript.
+
+**Example Map**
+
+```
+google -> http://www.google.com
+shortysbelltown -> https://www.google.com/maps/place/Shorty's....
+```
+
+Using the idea of shortening links by **mapping** a shorter word to a longer URL, let's create a link shortener!
+
 **NOTE:** For this assignment, fork and clone this repository your computer, and run `npm init` in the folder to being the project.
 
 ##User Experience
@@ -29,6 +40,8 @@ http://bit.ly/shortysbelltown
 
 **Usage:** User should be able to come to the site, enter a url, click submit (or press enter) and receive a shortened url that they can share.
 
+**Example:** I go to the link shortener's home page, and there's a form to enter a link to be shortened. Once I enter the link and click "Submit", I'm redirected to a page with my shortened link.
+
 
 ###User 2 - URL recipient
 
@@ -36,7 +49,7 @@ http://bit.ly/shortysbelltown
 
 **Usage:** User should be redirected to the original URL used to create the shortened url.
 
-
+**Example:** I receive a shortened link for `http://localhost:3000/shortysbelltown`. When I go to that link, I should be **redirected** to the Google Street View page that displays Shorty's.
 
 ##Site Routes
 
@@ -45,14 +58,14 @@ http://bit.ly/shortysbelltown
 | GET | / | Home page | Contains a simple form where a user can enter a URL and get a short url |
 | POST | /links | Create Link | Accepts data from the form. Stores the url in the database and redirects to the show route. |
 | GET | /links/:id | Show Link | Displays the short url of the specified id (so the user can copy / share it) |
-| GET | /:hash | Redirect | Takes a hash and redirects the user to the url stored in the database |
+| GET | /:hash | Redirect | Takes a hash and redirects the user to the url stored in the database. |
 
 
 ##Database Model
 
 This should only require 1 database model called "links" which can contain 3 columns id, url, hash.
 
-**Optional bonus** Try using only 2 columns (id and url), while still using a hash
+**Optional bonus** Try using only 2 columns (id and url), while still using a hash. You'll need to perform a migration in order to remove the hash column.
 
 ##Suggested Process
 
@@ -60,20 +73,23 @@ This should only require 1 database model called "links" which can contain 3 col
 
 * create project directory
 * npm init
-* Install web server stuff (npm): express ejs body-parser
-* Setup a basic express server (res.send('hi') on `GET /` route)
+* Install web server stuff with npm, like express, ejs, body-parser
+* Setup a basic express server
 * Build all pages / routes
 
 ###Add database
 
 * Install database stuff (npm): pg pg-hstore sequelize
-* create database (postgres)
-* sequelize init
-* Create migration
+* Create the database
+* Initialize sequelize
+* Change database configuration
+* Create migration for a new model
 * Run migration
 * Test model (try to create/find links using the Node console, or a separate test file)
 
 ###Put it together
+
+Remember that "hash" we mentioned? We can generate a unique id from a number by using the `hashids` module. Note that hashes can be maps as well. `hashids` provides a function that maps each number to a generated string, which requires a **salt** in order to provide variability.
 
 * Install hashing module (npm): hashids
 * Add code in to your previously created routes so they interact with the database and generate hashes ([draw the rest of the owl](http://www.forimpact.org/wp-content/uploads/2014/01/HowToDrawOwl.jpg)).
@@ -88,7 +104,7 @@ This should only require 1 database model called "links" which can contain 3 col
 
 ## Part 2 - Track click count
 
-Keep track of how many times the shortened url is used. To do this you'll just need to add another column `count:Integer` to the links table and increment it every time someone is redirected to that url.
+Keep track of how many times the shortened url is used. To do this you'll just need to add another column `count:Integer` to the links table and increment it every time someone is redirected to that url. This will require a migration.
 
 Additionally, add a count to the Show page... eg: "This link has been clicked **X** times."
 
