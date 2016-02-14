@@ -1,0 +1,25 @@
+{
+  "name": "link-shortener",
+  "version": "1.0.0",
+  "description": "A link shortener is a tool that takes a long URL and shortens it. **WOW!! MAGIC!!**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-buffum/link-shortener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-buffum/link-shortener/issues"
+  },
+  "homepage": "https://github.com/k-buffum/link-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "hashids": "1.0.2"
+  }
+}

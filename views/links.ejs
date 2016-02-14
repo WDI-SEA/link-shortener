@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Links</title>
+</head>
+<body>
+	<h1>Link Ranking:</h1>
+
+	<ul>
+		<% links.forEach(function(link) { %>
+			<li>
+				<span>Link: <%= link.url %></span>
+				<span>Click Count: <%= link.count %></span>
+			</li>
+		<% }); %>
+	</ul>
+</body>
+</html>

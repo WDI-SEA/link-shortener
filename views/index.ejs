@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Link Shortener</title>
+	</head>
+	<body>
+
+		<h1>Link Shortener</h1>
+
+			<form method="POST" action="/links">
+				<input type="text" placeholder="Enter original URL" name="originalUrl">
+				<input type="submit" value="Submit">
+			</form>
+			
+			<h3 id="shortUrl">
+				<%if (locals.shortUrl) { %>
+					<%= shortUrl %>
+					<p>This link has been used <%= count %> times</p>
+				<% } %>
+			</h3>
+
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	</body>
+</html>
