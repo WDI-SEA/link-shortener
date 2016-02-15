@@ -25,19 +25,20 @@ app.get("/", function(req, res){
 	res.render("index.ejs");
 });
 
-/*set up route /link and send the web address to the database. Once it gets there
-access the unique identifier it was given. pass that identifier to the hashid 
-algorithm which generates a short code based on the value of the ID. the short
-code is then send to the database, updating the entry for the web address. The 
-address and generated hash id are then saved to global variables and there is a 
-redirect to /link/:id*/ 
+/*set up route /link and send the web address to the database if it is a unique
+address. Once it gets there access the unique identifier it was given. pass that 
+identifier to the hashid algorithm which generates a short code based on the value 
+of the ID. Counter is set to 0 if it was previously unused (eg, null). The counter
+and hashid values are added to the database.*/ 
 app.post("/link", function(req, res){
 	var linkToShorten = req.body.linkToShorten;
 	db.linkToShorten.findOrCreate({where: {link: linkToShorten}})
 	.spread(function(link, created){
-		link.updateAttributes({
-			count: 0
-		});
+		if (link.count === null){
+			link.updateAttributes({
+				count: 0
+			});
+		}
 	})
 	.then(function(){
 		db.linkToShorten.find({where: {link: linkToShorten}})
@@ -49,39 +50,33 @@ app.post("/link", function(req, res){
 		   	res.redirect("/link/"+id);
 		});
 	});
-
-	/*db.linkToShorten.create({
-		link: linkToShorten,
-		count: 0
-	}).then(function(){
-		db.linkToShorten.find({where: {link: linkToShorten}}).then(function(link){
-		  var id = hashids.encode(link.id);
-		  link.updateAttributes({
-		    short: id
-		  });	
-		  res.redirect("/link/"+id);
-		});
-	});*/
 });
 
 /*sets up a route for any webroute that has an id after link/ route. Once this path 
-is activated the link/link.ejs file is rendered and the global variables address and hashid are 
-passed to link.ejs and the file is rendered*/
+is activated the link/link.ejs file is rendered and the global variables address, hashid 
+and count are passed to link.ejs and the file is rendered*/
 app.get("/link/:id", function(req, res){
   	var hashid = req.params.id;
   	console.log(hashid);
        db.linkToShorten.find({where: {short: hashid}}).then(function(link){
           var address = link.link;
           var hashid = link.short;
+          var count = link.count;
           res.render("link/link.ejs", {
           	address: address,
-          	hashid: hashid
+          	hashid: hashid,
+          	count: count
           });
        });
 });
 
+/*sets up a route for /link/index which displays all the stored shortened weblinks*/
+app.get("/link/index", function(req, res){
+	
+});
+
 /*sets up route for /:hash where the hashid is placed after the '/' and the user is redirected to
-the address associated with that hashid. In addition the count value fo teh database is incremented
+the address associated with that hashid. In addition the count value for the database is incremented
 keeping track of how many times the shortened like is used*/
 app.get("/:hash", function(req, res){
    var hashid = req.params.hash;
