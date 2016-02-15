@@ -1,0 +1,16 @@
+<div class='list-container'>
+
+	<h3>Here is a list of all of the links that we have selflessly enshortenated for people. But yours was the most fun to make, honest.</h3>
+
+	<ul>
+	<% tinyurls.forEach(function(tinyurls) { %>
+		
+		<li> 
+			<div> <%= tinyurls.id %>. <a href=""> <%= tinyurls.hash %> </a></div>
+			<div> <%= tinyurls.url %> </div> 
+		</li>
+
+	<% }) %>
+	</ul>
+
+</div>
