@@ -11,10 +11,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var ejsLayouts = require("express-ejs-layouts");
 var db = require("./models");
-
-/*global variables*/
-var address;
-var hashid;
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt");
 var app = express();
@@ -45,9 +41,7 @@ app.post("/link", function(req, res){
 		  link.updateAttributes({
 		    short: id
 		  });	
-		  address = link.link;
-		  hashid = link.short;
-		  res.redirect("/link/"+hashid);
+		  res.redirect("/link/"+id);
 		});
 	});
 });
@@ -56,17 +50,28 @@ app.post("/link", function(req, res){
 is activated the link/link.ejs file is rendered and the global variables address and hashid are 
 passed to link.ejs and the file is rendered*/
 app.get("/link/:id", function(req, res){
-  	res.render("link/link.ejs", {
-	  address: address,
-	  hashid: hashid
-	});
+  	var hashid = req.params.id;
+  	console.log(hashid);
+       db.linkToShorten.find({where: {short: hashid}}).then(function(link){
+          var address = link.link;
+          var hashid = link.short;
+          console.log(address);
+          console.log(hashid);
+          res.render("link/link.ejs", {
+          	address: address,
+          	hashid: hashid
+          });
+       });
 });
 
 /*sets up route for /:hash where the hashid is placed after the '/' and the user is redirected to
 the address associated with that hashid*/
 app.get("/:hash", function(req, res){
-   
-	  res.redirect("http://"+address);
+   var hashid = req.params.hash;
+   db.linkToShorten.find({where: {short: hashid}}).then(function(link){
+      var address = link.link;
+      res.redirect("http://"+address);
+   });
 });
 
 
