@@ -5,6 +5,7 @@ var Hashids = require("hashids");
 var db = require('./models');
 var app = express();
 
+
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
@@ -17,7 +18,8 @@ app.get('/', function(req, res) {
 app.post('/links', function(req, res){
 	var url = req.body.url;
 	db.link.create({
-		url: url
+		url: url, 
+		count: 0
 	}).then(function(link){
 		var hashids = new Hashids("this is my super salty initial salt", 6);
 		var id = hashids.encode(link.id);
@@ -26,17 +28,25 @@ app.post('/links', function(req, res){
     	res.render('show.ejs', {id: id});
 	});
 });
+app.get('/links', function(req, res){
+	db.link.findAll({
+		order: 'count DESC'
+	}).then(function(links){	
+		res.render('links.ejs', {links:links});
+	});
+});
 
 app.get('/links/:hash', function(req, res){
 	var hashid = req.params.hash;
 	var hashids = new Hashids("this is my super salty initial salt", 6);
 	var numbers = hashids.decode(hashid);
-	db.link.find({where: {hash: hashid}}).then(function(link){
-		res.render('fullurl.ejs', {url: link.url});
+	db.link.findOne({where: {hash: hashid}}).then(function(link){
+		return link.increment('count', {by: 1})
+	}).then(function(link){
+		res.render('fullurl.ejs', {url: link.url, count: link.count});
 	});
 });
 
-// app.use('/tacos', require('./controllers/tacos'));
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
