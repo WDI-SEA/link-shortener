@@ -2,7 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var linkToShorten = sequelize.define('linkToShorten', {
     link: DataTypes.STRING,
-    short: DataTypes.STRING
+    short: DataTypes.STRING,
+    count: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {

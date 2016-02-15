@@ -14,6 +14,9 @@ module.exports = {
       short: {
         type: Sequelize.STRING
       },
+      count: {
+        type: Sequalize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

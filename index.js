@@ -34,7 +34,8 @@ redirect to /link/:id*/
 app.post("/link", function(req, res){
 	var linkToShorten = req.body.linkToShorten;
 	db.linkToShorten.create({
-		link: linkToShorten
+		link: linkToShorten,
+		count: 0
 	}).then(function(){
 		db.linkToShorten.find({where: {link: linkToShorten}}).then(function(link){
 		  var id = hashids.encode(link.id);
@@ -55,8 +56,6 @@ app.get("/link/:id", function(req, res){
        db.linkToShorten.find({where: {short: hashid}}).then(function(link){
           var address = link.link;
           var hashid = link.short;
-          console.log(address);
-          console.log(hashid);
           res.render("link/link.ejs", {
           	address: address,
           	hashid: hashid
@@ -65,11 +64,16 @@ app.get("/link/:id", function(req, res){
 });
 
 /*sets up route for /:hash where the hashid is placed after the '/' and the user is redirected to
-the address associated with that hashid*/
+the address associated with that hashid. In addition the count value fo teh database is incremented
+keeping track of how many times the shortened like is used*/
 app.get("/:hash", function(req, res){
    var hashid = req.params.hash;
    db.linkToShorten.find({where: {short: hashid}}).then(function(link){
       var address = link.link;
+      var count = link.count;
+      link.updateAttributes({
+		    count: count + 1
+		  });
       res.redirect("http://"+address);
    });
 });
