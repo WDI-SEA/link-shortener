@@ -1,5 +1,16 @@
+/*Main css file to control the style fo the entire web app*/
+
+/*CSS styling for the main page input form*/
 #shortenfield {
 	width: 22em;
+	margin: 20em auto 0 auto;
+	text-align: center;
+}
+
+/*CSS styling for the short address display element*/
+#displayShortAddress {
+	border: 1px solid black;
+	width: 30em;
 	margin: 20em auto 0 auto;
 	text-align: center;
 }
