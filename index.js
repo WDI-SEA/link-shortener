@@ -33,7 +33,24 @@ address and generated hash id are then saved to global variables and there is a
 redirect to /link/:id*/ 
 app.post("/link", function(req, res){
 	var linkToShorten = req.body.linkToShorten;
-	db.linkToShorten.create({
+	db.linkToShorten.findOrCreate({where: {link: linkToShorten}})
+	.spread(function(link, created){
+		link.updateAttributes({
+			count: 0
+		});
+	})
+	.then(function(){
+		db.linkToShorten.find({where: {link: linkToShorten}})
+		.then(function(link){
+		   	var id = hashids.encode(link.id);
+		   	link.updateAttributes({
+		   		short: id
+		   	});	
+		   	res.redirect("/link/"+id);
+		});
+	});
+
+	/*db.linkToShorten.create({
 		link: linkToShorten,
 		count: 0
 	}).then(function(){
@@ -44,7 +61,7 @@ app.post("/link", function(req, res){
 		  });	
 		  res.redirect("/link/"+id);
 		});
-	});
+	});*/
 });
 
 /*sets up a route for any webroute that has an id after link/ route. Once this path 
