@@ -12,7 +12,7 @@ var bodyParser = require("body-parser");
 var ejsLayouts = require("express-ejs-layouts");
 var db = require("./models");
 var Hashids = require("hashids"),
-	hashids = new Hashids("this is my salt");
+	hashids = new Hashids("ARRG Captain, tis truely a salty sea #SoSalty");
 var app = express();
 
 app.set("view engine", "ejs");
