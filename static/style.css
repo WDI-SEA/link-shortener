@@ -1,0 +1,57 @@
+body {
+	background: #eee;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+	color: #353;
+}
+
+#conatainer {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header {
+	background-color: #c9f;
+}
+
+h1 {
+	font-size: 52px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+form {
+	border: #333 double 12px;
+	width: 80%;
+	padding: 20px;
+	margin: 10px auto;
+}
+
+input {
+	line-height: 2em;
+	font-size: 18px;
+	width: 66%;
+}
+
+button {
+	font-size: 18px;
+	line-height: 2em;
+	font-weight: bold;
+	border-radius: 50px;
+	background-color: #f22;
+}
+
+.list-container {
+	margin: 0 auto;
+	width: 75%;
+}
+
+.list-container li {
+	list-style-type: none;
+}
