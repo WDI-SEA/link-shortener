@@ -56,10 +56,7 @@ app.get('/:hash', function(req, res){
 		db.hash.findOne({where: {hash: hashid}
 		}).then(function(row){
 		if(row){
-			if(!row.url.includes("http://")){
-				row.url = "http://" + row.url;
-				console.log(row.url);
-			}
+			row.url = "http://" + row.url;
 			row.clickCount += 1;
 			row.save();
 			res.redirect(row.url)
