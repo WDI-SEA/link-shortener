@@ -1,0 +1,15 @@
+<% include ../partials/header.ejs %>
+
+	<h1 id="title">Link Crusher</h1>
+	<div class="container">
+		<form action="links" method="POST">
+			<div id="inputRow" class="row">
+				<input class="form-control" placeholder="Enter website to shorten" name="id" type="url" autofocus />
+			</div>
+			<div class="row">
+				<button class="btn waves-effect waves-light" type="submit">Submit</button>
+			</div>
+		</form>
+	</div>
+
+<% include ../partials/footer.ejs %>
