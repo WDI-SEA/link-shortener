@@ -1,0 +1,6 @@
+<h1>List of links </h1>
+
+<% var links = link.Search %>
+ <% links.forEach(function(url) { %>
+<h3> <%= url.url %></h3></a><h3><%= url.count %></h3>
+<% }) %>

@@ -15,9 +15,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(ejsLayouts);
 
 
-
 app.get('/', function(req,res) {
 	res.render('index.ejs')
+});
+
+
+app.get('/links/:id', function(req,res) {
+	var id = req.params.id;
+	db.link.findById(id).then(function(row) {
+		res.render('show.ejs', {row})
+	});
+	
 });
 
 
@@ -32,20 +40,24 @@ app.post('/links', function(req,res) {
 	
 });
 
-app.get('/links/:id', function(req,res) {
-	var id = req.params.id;
-	db.link.findById(id).then(function(row) {
-		res.render('show.ejs', {row})
-	});
-	
+
+app.get('/links', function(req, res){
+	var link = link.search;
+    db.link.findAll({order: 'count DESC'})
+        .then(function(row){
+            res.render('allLinks.ejs', 
+            	{row: link})
+        });
 });
+
 
 app.get('/:hash', function(req,res) {
 	var hash = req.params.hash;
 	db.link.findOne({where: {hash: hash} })
 	.then(function(row) {
 			res.redirect( 
-			'http://'+ row.url);
+			'http://'+row.url );
+			console.log(row.url);
 			if ( row.count == null ) {
 			row.updateAttributes( {count: 0})
 			}
@@ -56,20 +68,5 @@ app.get('/:hash', function(req,res) {
 });
 
 
-app.get('/links', function(req, res){
-    db.link.findAll({order: 'count DESC'})
-        .then(function(row){
-            res.render('index.ejs', {
-                row: url
-
-            });
-        });
-});
-
-
-
 
 app.listen(3000);
-
-
-

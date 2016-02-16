@@ -1,3 +1,13 @@
-<h1> Website: <%= row.url  %> </h1>
-<h2> Shortened link: <a href="localhost:3000/<%=row.hash %>"> localhost:3000/<%=row.hash %> </a> </h2>
-<h2> This link has been clicked <%= row.count %> times </h2>
+<div class='text-center'>
+	<h1 style="position:absolute ; width:100% ; margin-top:70px; color:white"> I SHORTENED IT MEOW</h1>
+	<img class='img-circle' src='http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg'/>
+</div>
+
+<div style="position:absolute; width: 100% ; margin-top:-400px; color: white ;" class= "dl-horizontal text-center">
+<h3> Website: <a style="color:white" href='row.url'> <%= row.url%></a></h3>
+<h3> Short link:
+<a target="_blank" style="color:white" href="localhost:3000/<%=row.hash %>"> localhost:3000/<%=row.hash %> </a> </h3>
+<h3 style="color:white"> This link has been clicked  <%= row.count %> times </h3>
+</div>
+
+
