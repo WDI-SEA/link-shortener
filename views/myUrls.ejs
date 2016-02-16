@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="page-header">
+		<h1>k.ninja <small>All my simplified urls</small></h1>
+		<a href="/" class="btn btn-primary">Home</a>
+	</div>
+	<p>(by popularity)</p>
+	<% urls.forEach(function(url) { %>
+		<div class="well">
+			<p>
+				<a href="<%= url.link %>">
+					<%= url.hash %>
+				</a>
+			</p>
+			<p>
+				Clicks: <%= url.clicks %>
+			</p>
+		</div>
+	<% }); %>
+</div>
