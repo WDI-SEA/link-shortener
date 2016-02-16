@@ -1,13 +1,12 @@
 /*Main css file to control the style fo the entire web app*/
 
 /*CSS styling for the main page input form*/
-#shortenfield {
+.shortenfield {
 	width: 22em;
 }
 
 /*CSS styling for the short address display element*/
 #displayShortAddress {
-	border: 1px solid black;
 	width: 30em;
 }
 
@@ -20,5 +19,10 @@
 /*css to adjust position of the index*/
 #index {
 	margin: 0 auto;
+	text-align: center;
+}
+
+#linkToIndexFromHome {
+	margin: 5em auto 0 auto;
 	text-align: center;
 }

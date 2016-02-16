@@ -1,9 +1,12 @@
 <!-- Form used to take the input from the user and pass it to the index.js file for processing
  when the shorten button is clicked -->
-<form id="shortenfield" action="/link" method="POST" class="navbar-form navbar-center position" role="search">
+<form class="shortenfield position" action="/link" method="POST" class="navbar-form navbar-center position" role="search">
   <h1>Link Shortener</h1>
   <div class="form-group">
     <input name="linkToShorten" type="text" class="form-control" placeholder="type an address to shorten">
   </div>
   <button type="submit" class="btn btn-default">Shorten</button>
+</form>
+<form id="linkToIndexFromHome" class="shortenfield" action="/index">
+	<button type="submit" class="btn btn-default">List popular Links</button>
 </form>

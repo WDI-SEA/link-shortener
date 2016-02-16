@@ -10,6 +10,7 @@ global variables. Closes at the end of the code.*/
 var express = require("express");
 var bodyParser = require("body-parser");
 var ejsLayouts = require("express-ejs-layouts");
+var request = require("request");
 var db = require("./models");
 var Hashids = require("hashids"),
 	hashids = new Hashids("ARRG Captain, tis truely a salty sea #SoSalty");
@@ -29,27 +30,46 @@ app.get("/", function(req, res){
 address. Once it gets there access the unique identifier it was given. pass that 
 identifier to the hashid algorithm which generates a short code based on the value 
 of the ID. Counter is set to 0 if it was previously unused (eg, null). The counter
-and hashid values are added to the database.*/ 
+and hashid values are added to the database. There is also a check to determine
+the submitted link is an actual website. the address that the user inputs is checked
+initially to see if they included an http:// if they didnt one is added to the start
+of the address. This is to allow it to pass the URL check and allow the user the 
+convenience of not having to type out http:// each time. the url is then checked 
+to see if it is a live web address.*/ 
 app.post("/link", function(req, res){
 	var linkToShorten = req.body.linkToShorten;
-	db.linkToShorten.findOrCreate({where: {link: linkToShorten}})
-	.spread(function(link, created){
-		if (link.count === null){
-			link.updateAttributes({
-				count: 0
-			});
+	console.log(linkToShorten);
+	if (linkToShorten.indexOf('http://') == -1){
+		linkToShorten = "http://"+linkToShorten;
+		console.log(linkToShorten);
+	}
+	request(
+		linkToShorten,
+		function(error, response){
+			if (!error && response.statusCode == 200) {
+				db.linkToShorten.findOrCreate({where: {link: linkToShorten}})
+				.spread(function(link, created){
+					if (link.count === null){
+						link.updateAttributes({
+							count: 0
+						});
+					}
+				})
+				.then(function(){
+					db.linkToShorten.find({where: {link: linkToShorten}})
+					.then(function(link){
+				  	 	var id = hashids.encode(link.id);
+				   		link.updateAttributes({
+			 	  			short: id
+			 	  		});	
+		   				res.redirect("/link/"+id);
+					});
+				});
+			} else {
+				res.redirect("/");
+			}
 		}
-	})
-	.then(function(){
-		db.linkToShorten.find({where: {link: linkToShorten}})
-		.then(function(link){
-		   	var id = hashids.encode(link.id);
-		   	link.updateAttributes({
-		   		short: id
-		   	});	
-		   	res.redirect("/link/"+id);
-		});
-	});
+	);
 });
 
 /*sets up a route for any webroute that has an id after link/ route. Once this path 
@@ -75,7 +95,6 @@ app.get("/link/:id", function(req, res){
 app.get("/index", function(req, res){
 	db.linkToShorten.findAll({order: 'count DESC'})
 		.then(function(link){
-			console.log(link);
 			res.render("link/index.ejs", {
 				link: link
 			});
