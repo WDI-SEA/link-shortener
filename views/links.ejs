@@ -1,8 +1,10 @@
 <% links.forEach(function(link){ %>
 	<div class='well'>
-		<p>ID: <%= link.id %> </p>
+		<p>ID: <a href='http://localhost:3000/link/<%= link.id %>'><%= link.id %></a></p>
 		<p>URL: <%= link.url %> </p>
 		<p>HASH: <a href='http://localhost:3000/<%= link.hash %>'><%= link.hash %> </p></a>
 		<p>CLICK COUNT: <%= link.clickCount %> </p>
 	</div>
 <% }) %>
+
+<a href="/">&larr; Back</a>

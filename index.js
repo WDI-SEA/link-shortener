@@ -11,7 +11,7 @@ var hashids = new Hashids("Hash", 6);
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/static/'));
 
 app.get('/', function(req, res){
 	res.render('index.ejs');
