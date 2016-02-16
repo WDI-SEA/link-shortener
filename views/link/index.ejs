@@ -1,0 +1,13 @@
+<div id="index">
+  <div><p><a class="btn btn-primary btn-lg" href="/" role="button">Back</a></p><div>
+  <div class="container">
+    <h1 style="color: grey">Shortened links</h1>
+    <% link.forEach(function(address) { %>
+      <div class="well" >
+        <h3>Address - <%= address.link %></a><br>
+        Shortens to - localhost:3000/<%= address.short %><br>
+        link used <%= address.count %> times.</h3>
+      </div>
+    <% }); %>
+  </div>
+</div>

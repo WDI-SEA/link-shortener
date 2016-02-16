@@ -57,22 +57,29 @@ is activated the link/link.ejs file is rendered and the global variables address
 and count are passed to link.ejs and the file is rendered*/
 app.get("/link/:id", function(req, res){
   	var hashid = req.params.id;
-  	console.log(hashid);
-       db.linkToShorten.find({where: {short: hashid}}).then(function(link){
-          var address = link.link;
-          var hashid = link.short;
-          var count = link.count;
-          res.render("link/link.ejs", {
-          	address: address,
-          	hashid: hashid,
-          	count: count
-          });
-       });
-});
+  	   	db.linkToShorten.find({where: {short: hashid}})
+  	   		.then(function(link){
+          		var address = link.link;
+          		var hashid = link.short;
+          		var count = link.count;
+          		res.render("link/link.ejs", {
+          			address: address,
+          			hashid: hashid,
+          			count: count
+          		});
+       		});
+  	}
+);
 
 /*sets up a route for /link/index which displays all the stored shortened weblinks*/
-app.get("/link/index", function(req, res){
-	
+app.get("/index", function(req, res){
+	db.linkToShorten.findAll({order: 'count DESC'})
+		.then(function(link){
+			console.log(link);
+			res.render("link/index.ejs", {
+				link: link
+			});
+		});
 });
 
 /*sets up route for /:hash where the hashid is placed after the '/' and the user is redirected to
