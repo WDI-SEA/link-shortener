@@ -1,0 +1,15 @@
+<div class="container">
+	<h1>Get Shorty URL Shortener<br>
+	<small>Please enter your URL below and click "Get Shorty" to receive your new shortened link.</small></h1>
+
+<form action="/links" method="POST">
+	<input type="text" name="longURL" placeholder="http://www.example.com" size="75"/><br>
+	<br>
+	<button type="submit" id="URLsubmit" class="btn btn-success">Get Shorty!</button>
+</form>
+<br>
+	<form method="GET" action="/links">
+    	<button type="submit" class="btn btn-danger">Most Popular Links</button>
+	</form>
+
+</div>

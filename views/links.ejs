@@ -1,0 +1,15 @@
+<div class="container">
+<h1><center>Most Popular Links</center></h1>
+<% link.forEach(function(url) { %>
+	<div class="well">
+		<h3>Short URL: <a href="http://localhost:3000/<%= url.hash %>">http://localhost:3000/<%= url.hash %></a><br>
+		<small>Long URL: <%= url.url %><br>
+		Number of Clicks: <%= url.counter %></small></h3>
+	</div>
+<% }); %>
+<div><a href="/">&larr;Home</a></div>
+</div>
+
+
+
+
