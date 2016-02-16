@@ -1,28 +1,32 @@
-/*Main css file to control the style fo the entire web app*/
+/*Main css file to control the style fo the entire web app - built with Materialize*/
+
+/*changing the nav bar color*/
+.nav-wrapper {
+	background-color: mediumseagreen;
+}
 
 /*CSS styling for the main page input form*/
 .shortenfield {
-	width: 22em;
+	width: 30em;
 }
 
 /*CSS styling for the short address display element*/
 #displayShortAddress {
-	width: 30em;
+	width: 60em;
+	margin: 5em auto 0 auto;
 }
 
 /*class to apply positioning to all elements that include it*/
 .position {
-	margin: 20em auto 0 auto;
+	margin: 15em auto 0 auto;
 	text-align: center;
 }
 
 /*css to adjust position of the index*/
 #index {
-	margin: 0 auto;
-	text-align: center;
+	width: 60em;
+	margin: 5em auto 0 auto;
 }
 
-#linkToIndexFromHome {
-	margin: 5em auto 0 auto;
-	text-align: center;
-}
+
+

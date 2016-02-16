@@ -112,7 +112,7 @@ app.get("/:hash", function(req, res){
       link.updateAttributes({
 		    count: count + 1
 		  });
-      res.redirect("http://"+address);
+      res.redirect(address);
    });
 });
 
