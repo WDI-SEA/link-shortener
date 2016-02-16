@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
   var q = req.body.url;
   db.tinyurl.create({
     url: req.body.url,
+    clicks: 0
   }).then(function(tinyurl) {
     var myHash = hashids.encode(tinyurl.id);
     tinyurl.updateAttributes({
@@ -23,7 +24,9 @@ router.get('/', function(req, res) {
 }) 
 
 router.get('/list', function(req, res) {
-  db.tinyurl.findAll().then(function(tinyurls) {
+  db.tinyurl.findAll({
+    order:'clicks DESC'
+  }).then(function(tinyurls) {
     res.render('linksFolder/linkList', {
       tinyurls: tinyurls
     });
