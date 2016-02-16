@@ -1,0 +1,10 @@
+<h1>Link Ranking</h1>
+
+<div>
+	<% links.forEach(function(link) { %>
+		<div class="linkRankingContainer">
+			<div class="count">Click Count: <%= link.count %></div>
+			<div>Link: <%= link.url %></div>
+		</div>
+	<% }); %>
+</div>
