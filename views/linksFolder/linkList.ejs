@@ -6,7 +6,9 @@
 	<% tinyurls.forEach(function(tinyurls) { %>
 		
 		<li> 
-			<div> <%= tinyurls.id %>. <a href=""> <%= tinyurls.hash %> </a></div>
+			<div> 
+				<%= tinyurls.id %>. <a href=<%= tinyurls.url %>>localhost:3000/links/<%= tinyurls.hash %></a>
+			</div>
 			<div> <%= tinyurls.url %> </div> 
 		</li>
 

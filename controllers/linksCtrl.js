@@ -11,7 +11,7 @@ router.post('/', function(req, res) {
   }).then(function(tinyurl) {
     var myHash = hashids.encode(tinyurl.id);
     tinyurl.updateAttributes({
-      hash: 'localhost:3000/'+myHash
+      hash: myHash
     });
     res.render('linksFolder/links', {tinyurl: tinyurl});
   });
@@ -20,9 +20,7 @@ router.post('/', function(req, res) {
 
 router.get('/', function(req, res) {
   var userInput = req.params.userInput;
-  console.log('action two ') +userInput;
   res.render('linksFolder/links');
-
 }) 
 
 router.get('/list', function(req, res) {
@@ -34,7 +32,9 @@ router.get('/list', function(req, res) {
 });
 
 router.get('/:hash', function(req, res) {
-
+  db.tinyurl.findOne({ where: { hash: req.params.hash} }).then(function(tinyurl) {
+    res.redirect(tinyurl.url);
+  });
 });
 
 module.exports = router;
