@@ -1,0 +1,119 @@
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+html {
+	height: 100%;
+	width: 100%;
+
+
+}
+
+div#wrapper {
+	background-image: url(http://41.media.tumblr.com/18877d80eaa5b47f7c1a9933e94a79b5/tumblr_nrwckiuIs91u16n75o1_1280.jpg);
+	min-height: 72%;
+	width: 100%;
+	padding-top: 200px;
+	background-position-x: 37px;
+
+}
+
+body {
+	background-color: grey;
+	/*border: black solid 5px;*/
+	/*background-repeat: repeat-x;*/
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	
+
+}
+
+h1 {
+	color: black;
+	text-align: center;
+	font-size: 65px;
+	font-family: 'Lato', sans-serif;
+	margin-bottom: 0;
+	margin-top: 0px;
+}
+
+button {
+	border: none;
+	background: none;
+	font-size: 15px;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+}
+
+button:hover {
+	background-color: #a3a3c2;
+	color: white;
+}
+
+input {
+	width: 200px;
+	height: 20px;
+	margin-left: 570px;
+	margin-top: 100px;
+	outline-color: #00ffbf;
+}
+
+h1 span {
+	color: #00ffbf;
+}
+
+h2 {
+	font-size: 40px;
+	color: white;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	margin-top: 200px;
+}
+
+body {
+	background-image: url(https://s-media-cache-ak0.pinimg.com/236x/a6/40/bc/a640bcd0e6707961bd2d479c291a394a.jpg);
+	background-position-x: -25px;
+}
+
+#opacity {
+	background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h2 span {
+	color: #00ffbf;
+}
+
+p  {
+	text-align: center;
+	
+}
+
+a {
+	color: white;
+	font-size: 30px;
+	font-family: 'Lato', sans-serif;
+
+
+}
+
+a:hover {
+	color:white;
+}
+
+a:active {
+	color:white;
+}
+
+a:visited {
+	color: white;
+}
+
+
+

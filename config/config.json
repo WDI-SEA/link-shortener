@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "linkshort_app",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "linkshort_app",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "linkshort_app",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
