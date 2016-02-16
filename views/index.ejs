@@ -2,15 +2,24 @@
 <html>
 <head>
 	<title>Link Crusher</title>
-	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 </head>
 <body>
 	<h1>Link Crusher</h1>
-	<form action="links" method="POST">
-		<input class="form-control" name="id" type="url" autofocus />
-		<button class="btn btn-default" type="submit">Submit</button>
-	</form>
+	<div class="container">
+		<form action="links" method="POST">
+			<div class="row">
+				<div class="col s8">
+					<input class="form-control" name="id" type="url" autofocus />
+				</div>
+				<div class="col s4">
+					<button class="button" type="submit">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
 <script src="http://code.jquery.com/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
 </body>
 </html>
