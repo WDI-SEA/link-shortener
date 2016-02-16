@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "sub_it",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "sub_it",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "sub_it",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
