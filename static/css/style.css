@@ -1,0 +1,166 @@
+/*
+Project Name: Link-Shortner
+Client: Me
+Author: Jonathan Andrew
+Developer @GA in Seattle
+*/
+
+
+/******************************************
+/* SETUP
+/*******************************************/
+body{
+	background-color: #002244;
+	
+}
+
+.well{
+	width: 800px;
+	background-color: #fff;
+	border: 2px solid green;
+	box-shadow: 2px 2px rgba(255,255,255,.8);
+	border-radius: 5%;
+	margin: 2% auto;
+}
+
+.well h1{
+	margin-left: 5%;
+	font-family: 'Passion One';
+	font-size: 3em;
+	text-shadow: 1px 2px solid rgba(0,0,0,.5);
+	font-weight: bold;
+	text-decoration: underline;
+
+}
+
+.well p{
+	margin-left: 5%;
+	width: 700px;
+	font-family: 'Passion One';
+	font-size: 2em;
+
+}
+
+.well p a{
+	margin-left: 5%;
+	word-wrap: break-word;
+	max-width: 750px;
+}
+
+.master-container{
+	width: 800px;
+	margin: 2% auto;
+	border: 5px solid green;
+	border-radius: 15%;
+	box-shadow: 2px 2px rgba(255,255,255,.8);
+	background-color: rgba(255,255,255,.5);
+}
+
+.container{
+	width: 800px;
+}
+
+.title{
+	padding: 1% 1%;
+	position: relative;
+	left: 2%;
+	background-color: #fff;
+	width: 250px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	border: 1px solid #000;
+	border-radius: 50%;
+	font-family: 'Tulpen One';
+    text-decoration: underline;
+    text-shadow: 1px 2px rgba(0,0,0,.5);
+    box-shadow: 2px 2px rgba(0,0,0,.8);
+    font-size: 5.4em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.form input{
+	margin: 0 auto;
+	padding: 1% 5%;
+	font-size: 2em;
+	border: 2px solid #000;
+	box-shadow: 2px 2px rgba(0,0,0,.8);
+	width: 500px;
+	margin-left: 5%;
+}
+
+.shortTitle{
+	padding: 1% 1%;
+	font-size: 4.5em;
+	text-align: center;
+	border: 2px solid #000;
+	border-radius: 25%;
+	width: 800px;
+	margin: 0 auto;
+	background-color: rgba(255,255,255,.5);
+	font-family: 'Passion One';
+	color: #000;
+	text-decoration: underline;
+	font-weight: bold;
+	box-shadow: 5px 5px rgba(255,255,255,.8);
+	text-shadow: 2px 3px rgba(255,255,255,.8);
+}
+
+.listForm{
+	width: 212px;
+    margin: 0 auto;
+}
+
+.listBTN{
+	margin: 0 auto;
+	font-color: #fff;
+	font-size: 2em;
+	font-family: 'Passion One';
+	font-weight: 800;
+	background-color: rgba(255,255,255,.9);
+	border: 5px solid green;
+	border-radius: 15%;
+}
+
+.listBTN:hover{
+	text-decoration: underline;
+	background-color: green;
+}
+
+button{
+	padding-left: 2%;
+}
+
+.form button{
+	font-color: #fff;
+	font-size: 2em;
+	font-family: 'Passion One';
+	font-weight: 800;
+	background-color: rgba(255,255,255,.8);
+	border: 5px solid green;
+	border-radius: 15%;
+}
+
+.form button:hover{
+	text-decoration: underline;
+	background-color: green;
+	border: 2px solid #fff;
+}
+
+.form button:active{
+	transform: translateY(5px);
+}
+
+.image{
+	padding: 2% 2%;
+	width: 300px;
+	position: relative;
+	left: 60%;
+}
+
+.image img{
+	border: 5px solid #000;
+	box-shadow: 2px 2px rgba(0,0,0,.8);
+	border-radius: 26%;
+}

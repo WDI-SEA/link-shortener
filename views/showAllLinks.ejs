@@ -1,0 +1,12 @@
+
+	 <h1 class="shortTitle"> All Shortened Links </h1>
+	<% links.forEach(function(link, id){ %>
+	<div class="well">	
+
+			<h1> # <%= link.id %> </h1>
+			<p> Original Url: <a href="http://localhost:3000/<%= link.hash %>"> <%= link.url %></a> </p>
+			<p> Shortened Link: <a href="http://localhost:3000/<%= link.hash %>"><%= link.hash %></a> </p>
+			<p> Clicks: <%= link.counter %></p>
+	</div>	
+	<% }); %>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>layout</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link href='https://fonts.googleapis.com/css?family=Passion+One:400,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="master-container">
+		<div class="container">
+			<h1 class="title">Link-Shortner</h1>
+			<form  action="/links" class="form" method="POST">
+				<input type="text" VARCHAR="500" name="linkName" placeholder="Please enter a URL" maxlength="100000000"></input>
+				<button class="btn-custom" type="submit">Shorten</button>
+			</form>
+		</div>
+
+		<div class="image">
+			<image src="../images/shortner.jpeg">
+		</div>
+	</div>
+
+<%- body %>
+
+</body>
+</html>
