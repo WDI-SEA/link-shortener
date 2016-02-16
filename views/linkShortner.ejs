@@ -1,0 +1,12 @@
+
+	<div class="well">
+		<h1> # <%= link.id %> </h1>
+		<p> Original Link: <a href="http://localhost:3000/<%= link.hash %>"><%= link.url %></a> </p>
+		<p> Shortened Link: <a href="http://localhost:3000/<%= link.hash %>"><%= link.hash %> </a></p>
+		<p> Clicks: <%= link.counter %></p>
+	</div>
+
+	<form class="listForm" action="/findAll">
+		<button class="listBTN" type="submit">List All Links</button>
+	</form>
+

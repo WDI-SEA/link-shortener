@@ -1,0 +1,29 @@
+{
+  "name": "link-shortener",
+  "version": "1.0.0",
+  "description": "A link shortener is a tool that takes a long URL and shortens it. **WOW!! MAGIC!!**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanAndrew/link-shortener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanAndrew/link-shortener/issues"
+  },
+  "homepage": "https://github.com/JonathanAndrew/link-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-ejs-layouts": "^2.0.0",
+    "hashids": "^1.0.2",
+    "pg": "^4.4.4",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.19.2"
+  }
+}
