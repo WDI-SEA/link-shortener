@@ -1,0 +1,13 @@
+<div class = 'container text-center'>
+	<div class='well'>
+		<h2>Original URL: </h2>
+		<h3><%= row.url %></h3>
+	</div>
+	<div class='well'>
+		<h2>Shortened Link: </h2>
+		<h3><a href='http://www.localhost:3000/<%=row.hash%>'> http://www.localhost:3000/<%= row.hash %></a></h3>
+	</div>	
+	<p>This link has been used <%=row.clickCount%> times</p>
+</div>
+
+<a href="/links">&larr; Back</a>
