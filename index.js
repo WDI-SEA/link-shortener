@@ -48,6 +48,14 @@ app.get("/links/:id", function(req, res) {
 	})
 });
 
+
+app.get("/links", function (req, res) {
+	db.link.findAll({order: 'counter DESC'})
+	.then(function (link) {
+		res.render("links.ejs", {link:link});
+	})
+}); 
+
 app.get("/:hash", function(req, res) {
 	var hash = req.params.hash;
 	db.link.findOne({
@@ -62,13 +70,6 @@ app.get("/:hash", function(req, res) {
 		link.save();
 	})
 });
-
-app.get("/links", function (req, res) {
-	db.link.findAll()
-	.then(function (link) {
-		res.render("links.ejs", {shortURL: link.hash, URLcount: link.count});
-	})
-}); 
 
 
 app.listen(3000);
