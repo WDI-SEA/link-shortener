@@ -17,7 +17,6 @@ router.post('/', function(req, res) {
   });
 });
 
-
 router.get('/', function(req, res) {
   var userInput = req.params.userInput;
   res.render('linksFolder/links');
@@ -34,6 +33,8 @@ router.get('/list', function(req, res) {
 router.get('/:hash', function(req, res) {
   db.tinyurl.findOne({ where: { hash: req.params.hash} }).then(function(tinyurl) {
     res.redirect(tinyurl.url);
+    tinyurl.clicks++;
+    tinyurl.save();
   });
 });
 

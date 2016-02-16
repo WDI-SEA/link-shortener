@@ -7,7 +7,7 @@
 		
 		<li> 
 			<div> 
-				<%= tinyurls.id %>. <a href=<%= tinyurls.url %>>localhost:3000/links/<%= tinyurls.hash %></a>
+				<a href='localhost:3000/links/'<%= tinyurls.hash %>>localhost:3000/links/<%= tinyurls.hash %></a><span> This link has been clicked on <%= tinyurls.clicks %> times!</span>
 			</div>
 			<div> <%= tinyurls.url %> </div> 
 		</li>
