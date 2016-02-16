@@ -19,17 +19,22 @@ app.get("/", function(req, res) {
 
 app.post("/links", function(req, res) {
 	var longURL = req.body.longURL;
-	//include logic that forces the user to enter http:// as part of their URL
+	var URLreq = longURL.includes("http://");
+	if (URLreq) {
 	db.link.create({
 		url: longURL
 	}).then(function (link) {
 		hashids = new Hashids("the saltiest of salts", 8);
 		var newID = hashids.encode(link.id);
 		link.updateAttributes({
-			hash: newID
+			hash: newID,
+			counter: 0
 		})
-		res.render('show.ejs', {shortURL: newID});
-	})
+		res.render('show.ejs', {shortURL: newID, URLcount: link.counter});
+		})
+	} else {
+		res.send("Error! Pleae prefix your link with http://");
+	  }
 });
 
 
@@ -38,7 +43,8 @@ app.get("/links/:id", function(req, res) {
 	db.link.findById(id)
 	.then(function (link) {
 		var currentHash = link.hash;
-	res.render('show.ejs', {shortURL: currentHash});
+		var currentCount = link.counter;
+		res.render('show.ejs', {shortURL: currentHash, URLcount: currentCount});
 	})
 });
 
@@ -51,11 +57,18 @@ app.get("/:hash", function(req, res) {
 	})
 	.then(function (link) {
 		var currentURL = link.url;
-	res.redirect(currentURL);
+		res.redirect(currentURL);
+		link.counter++;
+		link.save();
 	})
 });
 
-//app.get("/links") 
-//this will be the display of all links sorted by most clicked
+app.get("/links", function (req, res) {
+	db.link.findAll()
+	.then(function (link) {
+		res.render("links.ejs", {shortURL: link.hash, URLcount: link.count});
+	})
+}); 
+
 
 app.listen(3000);

@@ -14,6 +14,9 @@ module.exports = {
       hash: {
         type: Sequelize.STRING
       },
+      counter: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
