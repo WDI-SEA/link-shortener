@@ -6,12 +6,15 @@ var Hashids = require('hashids'),
 
 router.post('/', function(req, res) {
   var q = req.body.url;
-    db.tinyurl.create({
-      url: req.body.url,
-      hash: hashids.encode(db.tinyurl.find({ where: { url: q }}).then(function(tinyurl) {
-        return tinyurl.id;}))
+  db.tinyurl.create({
+    url: req.body.url,
+  }).then(function(tinyurl) {
+    var myHash = hashids.encode(tinyurl.id);
+    tinyurl.updateAttributes({
+      hash: 'localhost:3000/'+myHash
     });
-	res.render('linksFolder/links');
+    res.render('linksFolder/links', {tinyurl: tinyurl});
+  });
 });
 
 
