@@ -1,0 +1,28 @@
+h1 {
+	text-align: center;
+	font-size: 6em;
+}
+
+#title {
+	font-family: 'Iceland', cursive;
+}
+
+h2 {
+	text-align: center;
+}
+
+button {
+	width: 100%;
+}
+
+#inputRow {
+	margin-bottom: 0;
+}
+
+input.form-control {
+	margin-bottom: 5px;
+}
+
+nav {
+	background-color: #696773;
+}

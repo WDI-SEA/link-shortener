@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Shortened Link</title>
-</head>
-<body>
-<h1>Original Link:</h1>
-<p><%= url %></p>
-<h1>Shortened Link:</h1>
-<p><a href='http://localhost:3000/<%= hash %>'>http://localhost:3000/<%= hash %></a></p>
-<p>This link has been clicked <%= clickcount %> times.</p>
-</body>
-</html>
+<% include ../partials/header.ejs %>
+
+<div class="row">
+	<h1 class="col s6 center-align flow-text">Original Link:</h1>
+	<h1 class="col s6 center-align flow-text">Shortened Link:</h1>
+</div>
+<div class="row">
+	<p class="col s6 center-align"><%= url %></p>
+	<p class="col s6 center-align"><a href='http://localhost:3000/<%= hash %>'>http://localhost:3000/<%= hash %></a></p>
+</div>
+<div class="row">
+	<p class="col s12 center-align">This link has been clicked <%= clickcount %> times.</p>
+</div>
+
+<% include ../partials/footer.ejs %>

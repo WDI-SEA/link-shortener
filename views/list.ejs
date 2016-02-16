@@ -1,14 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Crushed Links</title>
-</head>
-<body>
+<% include ../partials/header.ejs %>
+
+<table>
+    <thead>
+      <tr>
+          <th data-field="id">Website</th>
+          <th data-field="name">Crushed Link</th>
+          <th data-field="count">Number of Clicks
+      </tr>
+    </thead>
+    <tbody>
+
 	<h1>Crushed Links</h1>
 	<% list.forEach(function(row) { %>
-		<h3><%= row.url %></h3>
-		<p><a href='http://localhost:3000/<%= row.hash %>'>http://localhost:3000/<%= row.hash %></a></p>
-		<p>Clicks: <%= row.clickcount %></p>
+
+	<tr>
+        <td><%= row.url %></td>
+        <td>
+        	<a href='http://localhost:3000/<%= row.hash %>'>
+        		http://localhost:3000/<%= row.hash %>
+    		</a>
+		</td>
+        <td><%= row.clickcount %></td>
+    </tr>
+		
 	<% }) %>
-</body>
-</html>
+
+	</tbody>
+</table>
+
+<% include ../partials/footer.ejs %>

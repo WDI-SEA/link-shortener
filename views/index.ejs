@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Link Crusher</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-</head>
-<body>
-	<h1>Link Crusher</h1>
+<% include ../partials/header.ejs %>
+
+	<h1 id="title">Link Crusher</h1>
 	<div class="container">
 		<form action="links" method="POST">
+			<div id="inputRow" class="row">
+				<input class="form-control" placeholder="Enter website to shorten" name="id" type="url" autofocus />
+			</div>
 			<div class="row">
-				<div class="col s8">
-					<input class="form-control" name="id" type="url" autofocus />
-				</div>
-				<div class="col s4">
-					<button class="button" type="submit">Submit</button>
-				</div>
+				<button class="btn waves-effect waves-light" type="submit">Submit</button>
 			</div>
 		</form>
 	</div>
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
-</body>
-</html>
+<% include ../partials/footer.ejs %>
