@@ -30,7 +30,7 @@ app.post("/links", function(req, res) {
 			hash: newID,
 			counter: 0
 		})
-		res.render('show.ejs', {shortURL: newID, URLcount: link.counter});
+		res.redirect("/links/" + link.id); //changed to redirect to fix new hashes being created on page refresh
 		})
 	} else {
 		res.send("Error! Pleae prefix your link with http://");
