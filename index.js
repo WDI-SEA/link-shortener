@@ -42,11 +42,12 @@ app.post('/links', function(req,res) {
 
 
 app.get('/links', function(req, res){
-	var link = link.search;
+	// var links = link.Search;
     db.link.findAll({order: 'count DESC'})
-        .then(function(row){
+        .then(function(links){
+        	console.log(links)
             res.render('allLinks.ejs', 
-            	{row: link})
+            	{links: links})
         });
 });
 
