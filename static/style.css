@@ -1,0 +1,15 @@
+body {
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+button {
+	background-color: lightcoral;
+	margin: 20px;
+	color: black;
+}
+
+#inputform {
+	color: black;
+}

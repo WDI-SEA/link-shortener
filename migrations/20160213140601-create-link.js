@@ -11,12 +11,12 @@ module.exports = {
       urlInput: {
         type: Sequelize.STRING
       },
-      shortUrl: {
+        hash: {
         type: Sequelize.STRING
       },
-      hash: {
-        type: Sequelize.STRING
-      },
+        count: {
+          type: Sequelize.INTEGER
+        },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
