@@ -3,11 +3,13 @@ var app = express();
 var bodyParser = require("body-parser");
 var Hashids = require("hashids");
 var hashids = new Hashids("saltines");
-var db = require("./models")
+var db = require("./models");
+var ejsLayouts = require("express-ejs-layouts");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(ejsLayouts);
+app.use(express.static(__dirname + '/static'));
 
 app.get("/", function(req, res) {
 	res.render("index.ejs");
@@ -40,17 +42,18 @@ app.get("/links", function(req, res) {
 app.get("/links/:id", function(req, res) {
 	var id = parseInt(req.params.id);
 	var hash = hashids.encode(id);
+	console.log(hash);
 
 	db.url.find({
 		where: {
-			id:id
+			id: id
 		}
 	}).then(function(url) {
 		res.render("index.ejs", {
 			shortUrl: "localhost:3000/" + hash,
 			count: url.count
 		});
-	});	
+	});
 });
 
 app.get("/:hash", function(req, res) {
@@ -58,7 +61,7 @@ app.get("/:hash", function(req, res) {
 	var id = hashids.decode(hash);
 	db.url.find({
 		where: {
-			id:id
+			id: id
 		}
 	}).then(function(url) {
 		url.count += 1;

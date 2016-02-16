@@ -20,6 +20,7 @@
     "body-parser": "^1.15.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "hashids": "1.0.2"
+    "express-ejs-layouts": "^2.0.0",
+    "hashids": "1.0.2",
   }
 }
