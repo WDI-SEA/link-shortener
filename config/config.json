@@ -18,6 +18,6 @@
     "password": "WDI2016",
     "database": "shortenedlink",
     "host": "127.0.0.1",
-    "dialect": "postres"
+    "dialect": "postgres"
   }
 }
