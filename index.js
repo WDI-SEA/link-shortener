@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var db = require('./models');
 var Hashids = require('hashids');
 var	hashids = new Hashids('evwilkin');
-var counter = 0;
  
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -12,6 +11,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Load home page
 app.get('/', function(req, res) {
 	res.render("index");
+});
+
+app.get('/links', function(req, res) {
+	db.link.findAll({ order: 'clickcount DESC'}).then(function(link) {
+		res.render('list', {
+			list: link
+		});
+	});
 });
 
 //Submit link
@@ -29,9 +36,8 @@ app.post('/links', function(req, res) {
 			//assign hashid to this row where it is currently null
 			row.updateAttributes({
 				hash: newHash,
-				clickCount: 0
+				clickcount: 0
 			});
-				console.log("*************newHash: ", newHash);
 			res.redirect("/links/" + linkID/*, { row }*/);
 		} else {
 			//link already exists, simply forward to existing unique ID (row number) in database
@@ -49,8 +55,8 @@ app.get('/links/:id', function(req, res) {
 	}).then(function(row) {
 		var url = row.url;
 		var hash = row.hash;
-		var clickCount = row.clickCount;
-		res.render("links", { url: url, hash: hash, clickCount: clickCount });
+		var clickcount = row.clickcount;
+		res.render("links", { url: url, hash: hash, clickcount: clickcount });
 	});
 });
 
@@ -63,7 +69,7 @@ app.get('/:hash', function(req,res) {
 		}
 	}).then(function(row) {
 		row.updateAttributes({
-			clickCount: ++row.clickCount
+			clickcount: ++row.clickcount
 		});
 		res.redirect(row.url);
 	});

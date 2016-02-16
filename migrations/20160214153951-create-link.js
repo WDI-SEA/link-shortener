@@ -14,7 +14,7 @@ module.exports = {
       hash: {
         type: Sequelize.STRING
       },
-      clickCount: {
+      clickcount: {
         type: Sequelize.INTEGER
       },
       createdAt: {

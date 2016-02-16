@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crushed Links</title>
+</head>
+<body>
+	<h1>Crushed Links</h1>
+	<% list.forEach(function(row) { %>
+		<h3><%= row.url %></h3>
+		<p><a href='http://localhost:3000/<%= row.hash %>'>http://localhost:3000/<%= row.hash %></a></p>
+		<p>Clicks: <%= row.clickcount %></p>
+	<% }) %>
+</body>
+</html>
