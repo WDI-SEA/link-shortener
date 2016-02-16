@@ -21,7 +21,6 @@ app.get('/', function(req,res) {
 });
 
 
-
 app.post('/links', function(req,res) {
 	var toShorten = req.body.longlink;
 	db.link.findOrCreate({where: {url: toShorten} })
@@ -29,21 +28,17 @@ app.post('/links', function(req,res) {
 		var hashname = hashids.encode(row.id);
 		row.updateAttributes( {hash: hashname});
 		res.redirect('/links/'+row.id);
-	})
+	});
 	
-})
-
-app.get('links', function(req,res) {
-	res.render
-})
+});
 
 app.get('/links/:id', function(req,res) {
 	var id = req.params.id;
 	db.link.findById(id).then(function(row) {
 		res.render('show.ejs', {row})
-	})
+	});
 	
-})
+});
 
 app.get('/:hash', function(req,res) {
 	var hash = req.params.hash;
@@ -54,15 +49,24 @@ app.get('/:hash', function(req,res) {
 			if ( row.count == null ) {
 			row.updateAttributes( {count: 0})
 			}
-		 	row.updateAttributes({count: count+1})
+		 	row.count += 1; 
+		 	row.save();
 	});
 
 });
 
 
-app.get('/links', function(req,res) {
-	
-})
+app.get('/links', function(req, res){
+    db.link.findAll({order: 'count DESC'})
+        .then(function(row){
+            res.render('index.ejs', {
+                row: url
+
+            });
+        });
+});
+
+
 
 
 app.listen(3000);
