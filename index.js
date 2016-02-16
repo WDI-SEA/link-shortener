@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 var db = require('./models');
 var Hashids = require("hashids"),
 	hashids = new Hashids("this is my salt");
- 
+
 var id = hashids.encode(12345);
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -27,7 +27,7 @@ app.post('/links', function(req,res) {
 	db.link.findOrCreate({where: {url: toShorten} })
 	.spread(function(row) {
 		var hashname = hashids.encode(row.id);
-		row.updateAttributes( {hash: hashname})
+		row.updateAttributes( {hash: hashname});
 		res.redirect('/links/'+row.id);
 	})
 	
@@ -49,13 +49,20 @@ app.get('/:hash', function(req,res) {
 	var hash = req.params.hash;
 	db.link.findOne({where: {hash: hash} })
 	.then(function(row) {
-		res.redirect( 
-			'http://'+ row.url)
-		link.count++;
-		link.save();
-	})
-})
+			res.redirect( 
+			'http://'+ row.url);
+			if ( row.count == null ) {
+			row.updateAttributes( {count: 0})
+			}
+		 	row.updateAttributes({count: count+1})
+	});
 
+});
+
+
+app.get('/links', function(req,res) {
+	
+})
 
 
 app.listen(3000);
