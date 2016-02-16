@@ -39,9 +39,8 @@ to see if it is a live web address.*/
 app.post("/link", function(req, res){
 	var linkToShorten = req.body.linkToShorten;
 	console.log(linkToShorten);
-	if (linkToShorten.indexOf('http://') == -1){
+	if ((linkToShorten.indexOf('http://') == -1) && (linkToShorten.indexOf('https://') == -1)){
 		linkToShorten = "http://"+linkToShorten;
-		console.log(linkToShorten);
 	}
 	request(
 		linkToShorten,
