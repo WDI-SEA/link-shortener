@@ -28,7 +28,8 @@ app.post('/links', function(req, res) {
 			var newHash = hashids.encode(linkID);  //newHash is the shortened hashid
 			//assign hashid to this row where it is currently null
 			row.updateAttributes({
-				hash: newHash
+				hash: newHash,
+				clickCount: 0
 			});
 				console.log("*************newHash: ", newHash);
 			res.redirect("/links/" + linkID/*, { row }*/);
@@ -48,7 +49,8 @@ app.get('/links/:id', function(req, res) {
 	}).then(function(row) {
 		var url = row.url;
 		var hash = row.hash;
-		res.render("links", { url: url, hash: hash });
+		var clickCount = row.clickCount;
+		res.render("links", { url: url, hash: hash, clickCount: clickCount });
 	});
 });
 
@@ -60,6 +62,9 @@ app.get('/:hash', function(req,res) {
 			hash: hash
 		}
 	}).then(function(row) {
+		row.updateAttributes({
+			clickCount: ++row.clickCount
+		});
 		res.redirect(row.url);
 	});
 });
