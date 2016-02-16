@@ -18,11 +18,6 @@ router.post('/', function(req, res) {
   });
 });
 
-router.get('/', function(req, res) {
-  var userInput = req.params.userInput;
-  res.render('linksFolder/links');
-}) 
-
 router.get('/list', function(req, res) {
   db.tinyurl.findAll({
     order:'clicks DESC'
