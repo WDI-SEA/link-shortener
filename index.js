@@ -20,7 +20,8 @@ app.get("/", function(req, res) {
 app.post("/links", function(req, res) {
 	var longURL = req.body.longURL;
 	var URLreq = longURL.includes("http://");
-	if (URLreq) {
+	var URLreqsec = longURL.includes("https://");
+	if (URLreq || URLreqsec) {
 	db.link.create({
 		url: longURL
 	}).then(function (link) {
