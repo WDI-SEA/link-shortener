@@ -1,0 +1,11 @@
+<div class='text-center'>
+	<h1 style="position:absolute ; width:100% ; margin-top:70px; color:white"> LIST OF LINKS MEOW</h1>
+	<img class='img-circle' src='http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg'/>
+</div>
+
+<div style="position:absolute; width: 100% ; margin-top:-400px; color: white ;" class= "dl-horizontal text-center">
+ 	<% links.forEach(function(link) { %>
+	<h3 style="color:white"> link: <a style="color:white"  href='link.url'> <%= link.url %> </a></h3> 
+	<h3 style="color:white"> count: <%= link.count %></h3>
+	<% }) %>
+</div>
