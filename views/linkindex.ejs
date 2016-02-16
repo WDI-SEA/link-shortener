@@ -1,0 +1,9 @@
+<h1>Shortened Links</h1>
+
+<% links.forEach(function(allLinks) {%>
+
+<a href="http://localhost:3000/<%= allLinks.hash %>">http://localhost:3000/<%= allLinks.hash %></a><div> Clicked times : <%= allLinks.count %></div>
+
+<% }); %>
+
+<a class="white" href="/">&larr;Home</a>

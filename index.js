@@ -32,6 +32,16 @@ app.post("/links", function(req, res) {
 	//console.log();
 });
 
+
+app.get("/linkindex", function (req, res) {
+	db.link.findAll().then(function(links) {
+		res.render('linkindex', {
+			links: links
+		});
+	});
+});
+
+
 app.get("/links/:id", function(req, res){
 	var link = req.params.id;
 	db.link.findById(link).then(function(shortUrl) {
