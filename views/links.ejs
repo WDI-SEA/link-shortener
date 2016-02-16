@@ -1,0 +1,9 @@
+<div class="container text-center">
+	<h1>Links</h1>
+	<% links.forEach(function(link){ %>
+		<div class="well">
+		<h2><%= link.url %></h2>
+		<p>click count = <%= link.count %></p>
+		</div>
+		<%});%>
+</div>
