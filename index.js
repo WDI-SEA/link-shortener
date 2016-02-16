@@ -23,7 +23,6 @@ app.post('/', function(req, res){
 		where: 
 		{url: link}
 	}).spread(function(newRow, isNew){
-		console.log(newRow);
 		newRow.hash = hashids.encode(newRow.id);
 		newRow.clickCount = 0;
 		newRow.save();
@@ -56,9 +55,18 @@ app.get('/:hash', function(req, res){
 	var hashid = req.params.hash;
 		db.hash.findOne({where: {hash: hashid}
 		}).then(function(row){
-		row.clickCount += 1;
-		row.save();
-		res.redirect(row.url)
+		if(row){
+			if(!row.url.includes("http://")){
+				row.url = "http://" + row.url;
+				console.log(row.url);
+			}
+			row.clickCount += 1;
+			row.save();
+			res.redirect(row.url)
+		}else{
+			res.send("Error, you monkey!");
+		}
+
 	});
 });
 
