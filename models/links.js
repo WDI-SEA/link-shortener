@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var links = sequelize.define('links', {
     counter: DataTypes.INTEGER,
-    url: DataTypes.STRING,
+    url: DataTypes.TEXT,
     hash: DataTypes.STRING
   }, {
     classMethods: {
