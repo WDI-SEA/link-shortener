@@ -15,6 +15,15 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+app.get('/links', function(req, res){
+	db.link.findAll({
+		order: 'count DESC'
+	}).then(function(links){	
+		res.render('links.ejs', {links:links});
+	});
+});
+
+
 app.post('/links', function(req, res){
 	var url = req.body.url;
 	db.link.create({
@@ -25,25 +34,19 @@ app.post('/links', function(req, res){
 		var id = hashids.encode(link.id);
 		link.updateAttributes({
     	hash: id });
-    	res.render('show.ejs', {id: id});
-	});
-});
-app.get('/links', function(req, res){
-	db.link.findAll({
-		order: 'count DESC'
-	}).then(function(links){	
-		res.render('links.ejs', {links:links});
+    	res.render('show.ejs', {id: id, count:link.count});
 	});
 });
 
-app.get('/links/:hash', function(req, res){
+
+
+
+app.get('/:hash', function(req, res){
 	var hashid = req.params.hash;
-	var hashids = new Hashids("this is my super salty initial salt", 6);
-	var numbers = hashids.decode(hashid);
 	db.link.findOne({where: {hash: hashid}}).then(function(link){
 		return link.increment('count', {by: 1})
 	}).then(function(link){
-		res.render('fullurl.ejs', {url: link.url, count: link.count});
+		res.redirect(link.url)
 	});
 });
 
