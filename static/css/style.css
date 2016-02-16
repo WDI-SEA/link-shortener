@@ -10,19 +10,19 @@
 	width: 30em;
 }
 
-/*CSS styling for the short address display element*/
+/*CSS styling for the short address display card*/
 #displayShortAddress {
 	width: 60em;
 	margin: 5em auto 0 auto;
 }
 
-/*class to apply positioning to all elements that include it*/
+/*class to apply general positioning to elements in the site*/
 .position {
 	margin: 15em auto 0 auto;
 	text-align: center;
 }
 
-/*css to adjust position of the index*/
+/*css to adjust position of the index cards*/
 #index {
 	width: 60em;
 	margin: 5em auto 0 auto;
