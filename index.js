@@ -106,19 +106,20 @@ keeping track of how many times the shortened like is used*/
 app.get("/:hash", function(req, res){
    var hashid = req.params.hash;
    db.linkToShorten.find({where: {short: hashid}}).then(function(link){
-      var address = link.link;
-      var count = link.count;
-      link.updateAttributes({
+      if (link != null) { 
+        var address = link.link; 
+        var count = link.count;
+        link.updateAttributes({
 		    count: count + 1
 		  });
-      res.redirect(address);
+        res.redirect(address);
+      }
    });
 });
 
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-  console.log("You're listening to the smooth sounds of port " + port);
 });
 
 }());

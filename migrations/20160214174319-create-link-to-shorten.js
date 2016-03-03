@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       count: {
-        type: Sequalize.INTEGER
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
