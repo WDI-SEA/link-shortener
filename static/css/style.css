@@ -1,0 +1,32 @@
+/*Main css file to control the style fo the entire web app - built with Materialize*/
+
+/*changing the nav bar color*/
+.nav-wrapper {
+	background-color: mediumseagreen;
+}
+
+/*CSS styling for the main page input form*/
+.shortenfield {
+	width: 30em;
+}
+
+/*CSS styling for the short address display card*/
+#displayShortAddress {
+	width: 60em;
+	margin: 5em auto 0 auto;
+}
+
+/*class to apply general positioning to elements in the site*/
+.position {
+	margin: 15em auto 0 auto;
+	text-align: center;
+}
+
+/*css to adjust position of the index cards*/
+#index {
+	width: 60em;
+	margin: 5em auto 0 auto;
+}
+
+
+
