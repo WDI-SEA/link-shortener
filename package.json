@@ -26,6 +26,7 @@
     "pg-hstore": "^2.3.2",
     "request": "^2.71.0",
     "sequelize": "^3.21.0",
+    "sequelize-cli": "^2.3.1",
     "url": "^0.11.0"
   }
 }
