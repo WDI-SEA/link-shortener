@@ -3,7 +3,6 @@ var ejsLayouts = require('express-ejs-layouts');
 var request = require('request');
 var bodyParser = require('body-parser');
 var app = express();
-var db = require('./models');
 
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
@@ -27,6 +26,7 @@ app.post("/links", function(req, res) {
 });
 
 app.get("/links/:id", function(req, res) {
+  var linkId = req.params.id;
   res.render('show');
 });
 
