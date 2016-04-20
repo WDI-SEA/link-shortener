@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/brytree/link-shortener/issues"
   },
-  "homepage": "https://github.com/brytree/link-shortener#readme"
+  "homepage": "https://github.com/brytree/link-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
 }
