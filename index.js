@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(__dirname + '/static'));
 
+
+
 var port = 3000;
 app.listen(port, function() {
   console.log("You're listening to the smooth sounds of port " + port);
