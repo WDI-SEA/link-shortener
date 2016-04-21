@@ -1,0 +1,13 @@
+body{
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+}
+
+nav {
+  text-align: center;
+}
+
+a {
+  color: green;
+}

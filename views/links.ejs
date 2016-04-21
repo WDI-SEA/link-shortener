@@ -1,0 +1,12 @@
+<h1> All Links </h1>
+<% links.forEach(function(link){ %>
+  <div>
+  <ul>
+    <li>
+      <!-- <h5> Original: <a href="<%= link.url %>"><%= link.url %> </a></h5> -->
+      <h5> shortened:  <a href="<%= link.hash %>">shrtn<%= link.hash %>r</a> </h5>
+      <h5> clicked <%= link.counter %> times </h5>
+      </li>
+    </ul>
+  </div>
+<% }); %>
