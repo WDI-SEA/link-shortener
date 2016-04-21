@@ -11,8 +11,28 @@ app.use(express.static(__dirname + '/static'));
 
 
 app.get('/', function(req, res) {
-	res.send("Well hello there");
+	res.render('index');
 });
+
+app.post('/links', function(req, res) {
+
+});
+
+app.get('/links/:id', function(req, res) {
+	//need req.body.params
+
+	res.render('/links-show', {links: links});
+});
+
+app.get('/links/:hash', function(req, res) {
+
+});
+
+
+
+
+
+
 
 
 var port = 3000;
