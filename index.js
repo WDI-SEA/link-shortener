@@ -18,31 +18,30 @@ app.get("/", function(req, res) {
 
 app.get("/:hash", function(req, res) {
 	var hash = req.params.hash;
-	var longUrl = hashids.decode(hash);
-	db.link.find({where: {url: longUrl}}).then(function(url){
-		res.redirect(url)
+	var urlId = hashids.decode(hash);
+	db.link.find({where: {id: urlId}}).then(function(url){
+		console.log(url.count);
+		url.count = url.count + 1;
+		url.save().then(function(url){
+			res.redirect(url.url);
+		})
 	})
-	// res.render('index');
 });
 
 app.post('/links', function(req, res) {
-	db.link.findOrCreate({
-  	where: {
+	db.link.create({
   		url: req.body.enterUrl,
+  		count: 1
   		// hash: urlHash
-  	}}).spread(function(url, created) {
-  		if(created) {
-
-  			
-  			hashId = hashids.encode(url.id)
-  			res.sendStatus(hashId);
-  		} else {
-  			hashId = hashids.encode(url.id)
-  			res.sendStatus(hashId);
-  			console.log(url);
-  			console.log(urlHash);
-  		}
-  	})
+  	}).then(function(url) {
+  			urlHash = hashids.encode(url.id)
+  			url.hash = urlHash;
+  			url.save().then(function(url) {
+  				console.log(url)
+  				res.render('show', {hash: urlHash})
+  			});
+  		});
+  	});
 	// res.send(req.body.enterUrl);
 
 
@@ -53,7 +52,6 @@ app.post('/links', function(req, res) {
 		// console.log(numbers);
 		// res.send(id + numbers)
 
-})
 
 app.get('/links:id', function(req, res) {
 	console.log(req.body.enterUrl);
