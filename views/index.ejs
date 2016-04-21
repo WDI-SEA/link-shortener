@@ -1,14 +1,31 @@
-<h1>Shorten a URL!</h1>
-<form method="POST" action="/urls">
-  <input type="text" name="url">
-  <input type="submit" value="shortenme">
-</form>
 
-<% if (requested) { %>
-  <div>
-  	Original URL: <a href="<%= fullurl %>"> <%= fullurl %></a>
+
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 index-form">
+  	  <h1>Shorten a URL!</h1>
+	  <form method="POST" action="/urls">
+		<input class="textbox" type="text" name="url" placeholder="Copy/Paste a long URL here...">
+		<input type="submit" value="Shorten Me!">
+	  </form>
+  	</div>
   </div>
-  <div>
-  	Short URL: <a href="<%= shorturl %>"><%= shorturl %></a>
+
+  <div class="row">
+  	<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2">
+	  <% if (requested) { %>
+	    <div>
+	    	You can copy/paste the shorter URL to make it easier to share!
+	    </div>
+	    <br>
+	    <div>
+	    	Original URL: <a href="<%= fullurl %>"> <%= fullurl %></a>
+	    </div>
+	    <br>
+	    <div>
+	    	Short URL: <a href="<%= fullurl %>"><%= shorturl %></a>
+	    </div>
+	  <% } %>		
+  	</div>
   </div>
-<% } %>
+</div>
