@@ -2,6 +2,10 @@ var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var request = require('request');
 var bodyParser = require('body-parser');
+var db = require('./models');
+var Hashids = require('hashids');
+var hashids = new Hashids("salt is essential");
+
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -14,24 +18,44 @@ app.get("/", function(req, res) {
   res.render('index');
 });
 
-app.post("/links", function(req, res) {
-  var comment = {imdbId: req.body.imdbID, 
-                  title: req.body.title, 
-                  year: req.body.year};
 
-  db.favorite.create(favMovie).then(function(movie){
-    console.log(movie);
-    res.redirect('/favs');
+app.get("/links", function(req, res) {
+  db.link.findAll
+  res.render('all_links');
+});
+
+app.post("/links", function(req, res) {
+  console.log(req.body);
+  var URL = req.body.url;
+  db.link.create({
+      url: URL
+    }).then(function(link) {
+      db.link.find({
+        where: {
+          url: URL
+      }}).then(function(link){
+      var secret = link.id;
+      var hash = hashids.encode(secret);
+        link.hash = hash;
+        link.save().then(function(secret){
+          res.redirect('/links/'+ secret.id);
+        });
+    });   
   });
 });
 
 app.get("/links/:id", function(req, res) {
-  var linkId = req.params.id;
-  res.render('show');
+  var id = req.params.id;
+  db.link.find({where: {id: id}}).then(function(hash){
+    res.render('show', {hash:hash});
+    });
 });
 
 app.get("/:hash", function(req, res) {
-  res.render('hash');
+  var hash = req.params.hash;
+  db.link.find({where: {hash: hash}}).then(function(hash){
+  res.redirect(hash.url);
+  });
 });
 
 app.listen(3000);
