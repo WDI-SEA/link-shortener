@@ -42,8 +42,10 @@ app.get('/links/:hash',function(req, res ) {
 })
 
 app.post('/links', function(req,res) {
-  formSubmit = req.body;
-  Url.create({url:formSubmit.url});
+  var formSubmit = req.body.url;
+  Url.create({url:formSubmit});
+  var hashUrl = hashids.endcode(formSubmit);
+  res.render("/links",{hashUrl:hashUrl});
 
 })
 
