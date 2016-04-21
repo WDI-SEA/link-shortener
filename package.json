@@ -23,6 +23,7 @@
     "express": "^4.13.4",
     "express-ejs-layouts": "^2.1.0",
     "express-session": "^1.13.0",
+    "mongoose": "^4.4.12",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.21.0"
   }
