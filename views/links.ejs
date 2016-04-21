@@ -1,0 +1,12 @@
+<h1>All short links</h1>
+
+<div>
+	<ul>
+	<% urls.forEach(function(url){ %>
+		<li>
+			<h4> <a href="<%= url.url %>">
+				localhost:3000/<%= url.hash %> </a></h4> &nbsp; redirects to &nbsp; <h4> <%= url.url %> (visits: <%= url.count %>) </h4>
+		</li>
+	<% }) %>
+	</ul>
+</div>

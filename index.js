@@ -16,22 +16,12 @@ app.get("/", function(req, res) {
 	res.render('index');
 });
 
-app.get("/:hash", function(req, res) {
-	var hash = req.params.hash;
-	var urlId = hashids.decode(hash);
-	db.link.find({where: {id: urlId}}).then(function(url){
-		console.log(url.count);
-		url.count = url.count + 1;
-		url.save().then(function(url){
-			res.redirect(url.url);
-		})
-	})
-});
 
 app.post('/links', function(req, res) {
+	console.log(req.body.enterUrl);
 	db.link.create({
   		url: req.body.enterUrl,
-  		count: 1
+  		count: 0
   		// hash: urlHash
   	}).then(function(url) {
   			urlHash = hashids.encode(url.id)
@@ -42,20 +32,24 @@ app.post('/links', function(req, res) {
   			});
   		});
   	});
-	// res.send(req.body.enterUrl);
 
 
-  // 	var hashids = new Hashids("Always Sunny in Philadelphia"),
-	 //  id = hashids.encode(),
-	 //  numbers = hashids.decode(id);
-	 //  console.log(id);
-		// console.log(numbers);
-		// res.send(id + numbers)
+app.get('/links', function(req, res) {
+	db.link.findAll({order: [['count', 'DESC']]}).then(function(urls){
+		res.render('links', {urls: urls})
+	});
+});
 
+app.get("/:hash", function(req, res) {
+	var hash = req.params.hash;
+	var urlId = hashids.decode(hash);
+	db.link.find({where: {id: urlId}}).then(function(url){
+		url.count = url.count + 1
+		url.save().then(function(url){
+			res.redirect(url.url);
+		})
+	})
+});
 
-app.get('/links:id', function(req, res) {
-	console.log(req.body.enterUrl);
-	res.send(req.body.enterUrl);
-})
 
 app.listen(process.env.PORT || 3000);

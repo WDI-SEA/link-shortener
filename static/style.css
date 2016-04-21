@@ -1,0 +1,9 @@
+h4 {
+	display: inline-block;
+}
+li {
+	list-style-type: none;
+}
+#nav-create {
+	width: 300px;
+}
