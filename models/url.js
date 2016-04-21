@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var urlSchema = new mongoose.Schema({
 	fullurl: String,
-	clicks: Number
+	click: Number
 });
 
 // urlSchema.methods.sayHello = function() {

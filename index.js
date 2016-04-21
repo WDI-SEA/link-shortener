@@ -26,8 +26,8 @@ app.get('/', function(req, res) {
 	res.render("index", {requested: false, fullurl: '', shorturl: ''});
 });
 
-// List urls
-app.get('/urls', function(req, res) {
+// List urls -- This route is not advertised, just used for viewing database.
+app.get('/urls-gimme', function(req, res) {
 	Url.find({}, function(err, urls) {
 		res.send(urls);
 	});
@@ -38,7 +38,7 @@ app.post('/urls', function(req, res) {
 	Url.count({fullurl: req.body.url}, function(err, count) {
 		if(!err && count === 0) {
 			console.log("---Creating and Saving new item.");
-			var item = new Url({fullurl: req.body.url});
+			var item = new Url({fullurl: req.body.url, click: 0});
 			item.save(function(err, doc) {
 				console.log(doc);
 				console.log("hashID:" + hashids.encode(doc._id));
@@ -72,9 +72,14 @@ app.get('/:hashID', function(req, res) {
 			res.send("Not a valid hashID");
 		}
 		else if(!err && count === 1) {
-			console.log("---Looking up full URL");
-			Url.findOne({_id: hashids.decodeHex(req.params.hashID)}, function(err, doc) {
-				res.redirect(doc.fullurl);
+			console.log("---Looking up full URL and incrementing count");
+			Url.findById(hashids.decodeHex(req.params.hashID), function(err, doc) {
+				doc.click = doc.click + 1;
+				doc.save(function(err){
+					if(!err){
+						res.redirect(doc.fullurl);
+					}
+				});
 			});
 		}
 	});
