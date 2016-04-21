@@ -1,0 +1,12 @@
+body {
+  background-color: lightblue;
+  height: 100%;
+}
+
+.container {
+  background-color: white;
+  min-height: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+

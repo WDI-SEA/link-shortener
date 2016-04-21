@@ -1,0 +1,13 @@
+<h1>Welcome to Link Shortener</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="/">
+      <h5>Enter the URL you want to shorten:</h5>
+      <input type="text" name="fullUrl" placeholder="Your original URL">
+      <input type="submit" value="Shorten!">
+      <br>
+      <h5>Your new URL:</h5>
+      <input type="text" value="<%= url %>" placeholder="New URL will be here" readonly="true">
+    </form>
+  </div>
+</div>
