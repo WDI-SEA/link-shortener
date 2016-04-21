@@ -1,5 +1,7 @@
 {
   "development": {
+    "username": "drewrudebusch",
+    "password": "KirbyDog2009",
     "database": "link-shortener",
     "host": "127.0.0.1",
     "dialect": "postgres"
