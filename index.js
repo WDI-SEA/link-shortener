@@ -25,6 +25,12 @@ app.post('/links', function(req, res){
   });
 });
 
+app.get('/links', function(req, res){
+  db.link.findAll().then(function(links){
+   res.render('links',{links: links});
+  });
+});
+
 app.get('/links/:id', function(req, res){
   db.link.findById(req.params.id).then(function(data){
     var outputUrl = data.url;
