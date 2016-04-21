@@ -20,8 +20,10 @@ app.get("/", function(req, res) {
 
 
 app.get("/links", function(req, res) {
-  db.link.findAll
-  res.render('all_links');
+  db.link.findAll().then(function(all){
+    console.log(all.hash);
+  });
+  res.render('alllinks', {all:all});
 });
 
 app.post("/links", function(req, res) {
