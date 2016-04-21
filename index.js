@@ -39,7 +39,7 @@ app.post("/links", function(req, res) {
 });
 
 app.get("/links", function(req, res) {
-  db.link.findAll().then(function(links){
+  db.link.findAll({order: [['counter', 'DESC']]}).then(function(links){
     console.log(links.hash);
     res.render('links', {links:links});
   });
@@ -56,7 +56,10 @@ app.get("/links/:id", function(req, res) {
 app.get("/:hash", function(req, res) {
   var hash = req.params.hash;
   db.link.find({where: {hash: hash}}).then(function(hash){
+  hash.counter = hash.counter + 1;
+  hash.save().then(function(hash){
   res.redirect(hash.url);
+    });
   });
 });
 
