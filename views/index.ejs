@@ -1,0 +1,14 @@
+<h1>Shorten a URL!</h1>
+<form method="POST" action="/urls">
+  <input type="text" name="url">
+  <input type="submit" value="shortenme">
+</form>
+
+<% if (requested) { %>
+  <div>
+  	Original URL: <a href="<%= fullurl %>"> <%= fullurl %></a>
+  </div>
+  <div>
+  	Short URL: <a href="<%= shorturl %>"><%= shorturl %></a>
+  </div>
+<% } %>
