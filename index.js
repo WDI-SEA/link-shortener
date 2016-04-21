@@ -19,12 +19,6 @@ app.get("/", function(req, res) {
 });
 
 
-app.get("/links", function(req, res) {
-  db.link.findAll().then(function(all){
-    console.log(all.hash);
-  });
-  res.render('alllinks', {all:all});
-});
 
 app.post("/links", function(req, res) {
   console.log(req.body);
@@ -45,6 +39,14 @@ app.post("/links", function(req, res) {
     });   
   });
 });
+
+app.get("/links", function(req, res) {
+  db.link.findAll().then(function(links){
+    console.log(links.hash);
+    res.render('links', {links:links});
+  });
+});
+
 
 app.get("/links/:id", function(req, res) {
   var id = req.params.id;
