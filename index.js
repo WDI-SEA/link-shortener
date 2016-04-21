@@ -15,8 +15,14 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-app.post('/links', function(req, res) {
-	db.findOrCreate({where: {
+app.get('/links-show', function(req,res) {
+	db.link.findAll().then(function(links) {
+		res.render('links-show', {links, links});
+	});
+});
+
+app.post('/', function(req, res) {
+	db.link.findOrCreate({where: {
 		url: req.body.url
 	}}).spread(function(url, isNew) {
 		if(isNew) {
@@ -29,10 +35,10 @@ app.post('/links', function(req, res) {
 	})
 });
 
-app.get('/links/:id', function(req, res) {
+app.get('/link/:id', function(req, res) {
 	//need req.body.params
 
-	res.render('/links-show', {links: links});
+	res.render('/link', {link: link});
 });
 
 app.get('/links/:hash', function(req, res) {
