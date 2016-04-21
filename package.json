@@ -1,0 +1,26 @@
+{
+  "name": "link-shortener",
+  "version": "1.0.0",
+  "description": "A link shortener is a tool that takes a long URL and shortens it. **WOW!! MAGIC!!**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StrongSad/link-shortener.git"
+  },
+  "author": "Jacob Barrus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StrongSad/link-shortener/issues"
+  },
+  "homepage": "https://github.com/StrongSad/link-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "ejs-layouts": "0.0.1",
+    "express": "^4.13.4",
+    "express-ejs-layouts": "^2.1.0"
+  }
+}
