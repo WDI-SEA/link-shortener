@@ -33,12 +33,16 @@ app.post('/shortner', function(req, res){
 	db.link.findOrCreate({
 		where: {
 			url: req.body.url,
+			hash: id
 		},
 
 	})
 	 res.send(req.body);
 })
 
+app.post("shortUrl", function(req, res){
+	// res.render()
+})
 
 
 var port = 3000;
