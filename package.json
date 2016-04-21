@@ -21,6 +21,9 @@
     "ejs": "^2.4.1",
     "ejs-layouts": "0.0.1",
     "express": "^4.13.4",
-    "express-ejs-layouts": "^2.1.0"
+    "express-ejs-layouts": "^2.1.0",
+    "pg": "^4.5.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.21.0"
   }
 }

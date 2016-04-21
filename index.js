@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
+var db = require('./models');
 
 var app = express();
 
@@ -15,7 +16,17 @@ app.get('/', function(req, res) {
 });
 
 app.post('/links', function(req, res) {
-
+	db.findOrCreate({where: {
+		url: req.body.url
+	}}).spread(function(url, isNew) {
+		if(isNew) {
+			res.redirect('/links-show');
+		} else {
+			res.redirect('/');
+		}
+	}).catch(function(err) {
+		res.send(err);
+	})
 });
 
 app.get('/links/:id', function(req, res) {
