@@ -18,8 +18,6 @@ app.get("/", function(req, res) {
   res.render('index');
 });
 
-
-
 app.post("/links", function(req, res) {
   console.log(req.body);
   var URL = req.body.url;
