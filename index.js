@@ -2,7 +2,7 @@ var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
 var Hashids = require("hashids"),
-  hashids = new Hashids("this is my salt");
+  hashids = new Hashids("this is my salt", 4, "0123456789abcdef");
 
 var db = require("./models");
 var app = express();
@@ -42,10 +42,14 @@ app.get('/links/:id', function(req, res){
 app.get('/:hash', function(req, res){
     var hash = req.params.hash;
     var id = hashids.decode(hash);
-    console.log("id before " + id);
-    id = id[0];
-    console.log("id after " + id);
+    console.log(typeof id);
+    var id = id[0];
+   
+
     db.link.findById(id).then(function(data){
+      var count = data.count + 1;
+      console.log("Count is "+ count);
+      data.updateAttributes({count: count});
       res.redirect(data.url);
     })
 
