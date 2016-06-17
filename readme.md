@@ -59,7 +59,7 @@ Using the idea of shortening links by **mapping** a shorter word to a longer URL
 
 ####Database Model
 
-This should only require 1 database model called "link" which can contain 3 columns: id and url.
+This should only require 1 database model called "link" which can contain 2 columns: id and url.
 
 ####Suggested Process
 
@@ -81,7 +81,7 @@ This should only require 1 database model called "link" which can contain 3 colu
 
 #####Put it together
 
-In order to avoid using the `id` in the shortened link, we can generate a unique id from the database model's `id` by using the `hashids` module. `hashids` provides a function that maps each number to a generated string, which requires a **salt** in order to provide variability.
+In order to avoid using the `id` as the hash in the shortened link, we can generate a hash from the database model's `id` by using the `hashids` module. `hashids` provides a function that maps each number to a generated string, which requires a **salt** in order to provide variability.
 
 * Install hashing module (npm): hashids
 * Add code in to your previously created routes so they interact with the database and generate hashes ([draw the rest of the owl](http://www.forimpact.org/wp-content/uploads/2014/01/HowToDrawOwl.jpg)).
