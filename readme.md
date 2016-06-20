@@ -19,7 +19,7 @@ http://bit.ly/shortysbelltown
 * https://goo.gl/
 * http://bitly.com
 
-Note that a link shortener utilizes a common data structure called a **map**. Maps are a mathematical idea that "map" items between two sets of entities, similar to objects in JavaScript.
+Note that a link shortener utilizes a common data structure called a **map**. Maps are a math concept that associates items between two sets of entities, similar to objects in JavaScript.
 
 **Example Map**
 
@@ -55,11 +55,11 @@ Using the idea of shortening links by **mapping** a shorter word to a longer URL
 | GET | / | Home page | Contains a simple form where a user can enter a URL and get a short URL |
 | POST | /links | Create Link | Accepts data from the form. Stores the URL in the database and redirects to the show route. |
 | GET | /links/:id | Show Link | Displays the short URL of the specified id (so the user can copy / share it) |
-| GET | /:hash | Redirect | Takes the ID and redirects the user to the URL stored in the database. |
+| GET | /:hash | Redirect | Takes the hash and redirects the user to the URL stored in the database. |
 
 ####Database Model
 
-This should only require 1 database model called "link" which can contain 2 columns: id and url.
+This should only require 1 database model called "link" which can contain 2 columns: id and url. Note that the url should be of type `text`. Think about why.
 
 ####Suggested Process
 
@@ -82,6 +82,8 @@ This should only require 1 database model called "link" which can contain 2 colu
 #####Put it together
 
 In order to avoid using the `id` as the hash in the shortened link, we can generate a hash from the database model's `id` by using the `hashids` module. `hashids` provides a function that maps each number to a generated string, which requires a **salt** in order to provide variability.
+
+Note that a hash is a piece of data, specifically a string. In this case, the hash *maps* to a number! Try it out.
 
 * Install hashing module (npm): hashids
 * Add code in to your previously created routes so they interact with the database and generate hashes ([draw the rest of the owl](http://www.forimpact.org/wp-content/uploads/2014/01/HowToDrawOwl.jpg)).
@@ -111,9 +113,13 @@ var linkId = hashids.decode("NkK9"); // linkId is now [ 12345 ]
 
 #### Track click count
 
-Keep track of how many times the shortened URL is used. To do this, you'll need to add another column `count:Integer` to the links table and increment it every time someone is redirected to that URL. This will require a migration.
+Keep track of how many times the shortened URL is used. To do this, you'll need to add another column `count:Integer` to the links table and increment it every time someone is redirected to that URL. Additionally, add a count to the Show Link page... eg: "This link has been clicked **X** times."
 
-Additionally, add a count to the Show Link page... eg: "This link has been clicked **X** times."
+This will require a migration. Running the following Sequelize command will make a migration file. Look at the [documentation for migrations](http://docs.sequelizejs.com/en/latest/docs/migrations/#functions) to find the functions necessary for a column migration.
+
+```bash
+sequelize migration:create --name addCountToLinkTable
+```
 
 #### Link index page
 
