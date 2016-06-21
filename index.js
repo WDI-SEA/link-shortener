@@ -27,11 +27,10 @@ app.get('/:hash', function(req, res) {
   var linkId = hashids.decode(req.params.hash);
 
   db.link.find({
-      where: { id: linkId }
-    }).then(function(event) {
-      res.redirect(event.url);
+    where: { id: linkId }
+  }).then(function(event) {
+    res.redirect(event.url);
   });
-
 });
 
 app.use('/link', require('./controllers/link.js'));
