@@ -26,6 +26,7 @@ app.post('/urlshow', function(req, res) {
   })
 })
 
+//:hash MUST be last route defined. throws error otherwise b/c anything can be ":hash"
 app.get('/:hash', function(req, res) {
   var id = hashids.decode(req.params.hash);
   db.link.findById(id[0]).then(function(link) {
