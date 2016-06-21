@@ -16,3 +16,6 @@ body {
 .panel-title {
   color: #f8e4ff;
 }
+.panel-heading {
+  border: 0px;
+}

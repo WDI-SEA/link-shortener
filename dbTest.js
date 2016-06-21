@@ -1,4 +1,4 @@
-//Test comment posting
+//Test link posting
 var db = require('./models');
 
 db.link.create({
