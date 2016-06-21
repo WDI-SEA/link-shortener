@@ -1,0 +1,15 @@
+body {
+  background-color: gray;
+  text-align: center;
+}
+.mainContent {
+ box-shadow: 10px;
+ background-color: #6E804C;
+ display: inline-block;
+ border-radius: 10px;
+ padding: 10px 10px;
+}
+
+.textInput {
+  width: 300px;
+}

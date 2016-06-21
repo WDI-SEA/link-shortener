@@ -1,5 +1,4 @@
 var express = require('express');
-// var request = require('request');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
 var db = require('./models');
@@ -24,7 +23,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/:hash', function(req, res) {
-  // res.send(req.body.params)
+  // res.send(req.body.params) to test if stuff is working
   var linkId = hashids.decode(req.params.hash);
 
   db.link.find({
