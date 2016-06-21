@@ -7,6 +7,7 @@ body {
 
 a {
   font-size: 2em;
+  color: white;
 }
 
 .mainContent {
@@ -24,18 +25,21 @@ a {
   text-shadow: 0 1px 0 rgba(0,0,0,0.5);
   color: #FFF;
   font-family: 'Amatic SC', cursive;
+  font-size: 1.5em;
 }
 
 .submitButton:hover {
   background-color: #DA4F49;
   border-color: rgba(0,0,0,0.5);
   font-family: 'Amatic SC', cursive;
+  font-size: 1.5em;
 }
 
 .submitButton:active {
   background-color: #B32C24;
   border-color: rgba(0,0,0,0.9);
   font-family: 'Amatic SC', cursive;
+  font-size: 1.5em;
 }
 
 .textStyle {

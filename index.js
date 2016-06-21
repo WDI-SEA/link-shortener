@@ -9,14 +9,13 @@ var hashids = new Hashids('salt');
 var app = express();
 
 app.use(express.static('public'));
-
 app.use(require('morgan')('dev'));
-
 app.use(ejsLayouts);
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
+
+// paths
 
 app.get('/', function(req, res) {
   res.render('form.ejs');
