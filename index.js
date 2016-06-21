@@ -32,6 +32,7 @@ app.get('/:hash', function(req, res) {
   });
 });
 
+
 app.use('/link', require('./controllers/link.js'));
 var server = app.listen(process.env.PORT || 3000);
 
