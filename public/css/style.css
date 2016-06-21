@@ -9,6 +9,10 @@ body {
   color: #23568f;
   text-align: center;
 }
-.panel-title {
+.panel .panel-heading {
+  background-image: none;
   background-color: #0d193b;
+}
+.panel-title {
+  color: #f8e4ff;
 }
