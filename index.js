@@ -25,7 +25,6 @@ app.get('/:hash', function(req, res) {
   db.link.find({
     where: {id : a}
     }).then(function(link) {
-      console.log(link)
     res.redirect(link.url);
   }).catch(function(error) {
     res.status(400).send(error);

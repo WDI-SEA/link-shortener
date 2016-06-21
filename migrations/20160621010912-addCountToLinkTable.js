@@ -2,6 +2,11 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
+    queryInterface.addColumn(
+    'links',
+    'count',
+  Sequelize.STRING
+)
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
