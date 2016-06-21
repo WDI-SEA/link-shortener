@@ -15,7 +15,6 @@ app.use(express.static(__dirname + "/public/"));
 
 
 app.get('/', function(req, res) {
-  // res.send('Hello Backend!');
   res.render("main.ejs");
 });
 
@@ -25,11 +24,14 @@ app.get("/:hash", function(req, res) {
     where: { id: linkId }
   }).then(function(link) {
     // res.send(link);
+    // db.links.update({
+    //   count: count + 1
+    // });
     res.redirect(link.url);
   }).catch(function(error) {
     res.send("error");
   });
-});
+}); // end get(":hash")
 
 // add controllers
 app.use("/links", require("./controllers/links"));
