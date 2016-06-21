@@ -7,9 +7,11 @@ var Hashids = require("hashids");
 var hashids = new Hashids("this is my salt");
 
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(ejsLayouts);
+
 
 
 app.get('/', function(req, res) {
