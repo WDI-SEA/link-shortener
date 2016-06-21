@@ -1,0 +1,16 @@
+
+<a href="<%= process.env.LINK_SHORTENER_URL %>/links/stats">Top 10 Links</a>
+<div class="well">
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form action="/links" method="POST" class="form-group">
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <input type="url" name="linky" class="form-control" placeholder="Enter a URL to shrink">
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <input type="submit" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+
+</div>

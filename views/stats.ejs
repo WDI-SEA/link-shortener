@@ -1,0 +1,8 @@
+<h1>Top 10 Links</h1>
+
+<% links.forEach(function(link) { %>
+  <div class="well">
+    <%= link.clicks %>
+    <a href="<%= process.env.LINK_SHORTENER_URL + '/' %><%= hash.encode(link.id) %>"><%= link.url %></a>
+  </div>
+<%  }) %>
