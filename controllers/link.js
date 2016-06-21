@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
       url: req.body.linktoshorten
   }).then(function(data) {
     var hash = hashids.encode(data.id);
-    res.send('Your new link: localhost:3000/' + hash);
+    res.render("shorted.ejs", { hash: hash })
   });
 });
 
