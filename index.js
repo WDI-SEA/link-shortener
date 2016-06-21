@@ -27,11 +27,10 @@ app.post('/urlshow', function(req, res) {
 })
 
 app.get('/:hash', function(req, res) {
-  // db.link
   var id = hashids.decode(req.params.hash);
   db.link.findById(id[0]).then(function(link) {
     // console.log(link);
-    res.redirect('http://' + link.url);
+    res.redirect(link.url);
   })
 })
 
