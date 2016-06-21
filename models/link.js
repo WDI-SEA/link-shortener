@@ -1,8 +1,11 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var link = sequelize.define('link', {
-    url: DataTypes.TEXT
-  }, {
+    url: DataTypes.TEXT,
+    clicks: DataTypes.INTEGER,
+    lastClick: DataTypes.DATE
+  },
+   {
     classMethods: {
       associate: function(models) {
         // associations can be defined here

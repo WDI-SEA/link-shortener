@@ -30,7 +30,8 @@ app.get('/:hash', function(req, res) {
   }).then(function(event) {
     // redirect
     var url = event.url
-
+    event.clicks += 1;
+    console.log(event);
     // Checks if the url has the http prefix on it. Without this prefix,
     // res.redirect assumes this is a relative path.
     if (url.split(':')[0] !== 'http' || url.split(':')[0] !== 'https') {

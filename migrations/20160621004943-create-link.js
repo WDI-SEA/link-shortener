@@ -11,6 +11,12 @@ module.exports = {
       url: {
         type: Sequelize.TEXT
       },
+      clicks: {
+        type: Sequelize.INTEGER
+      },
+      lastClick: {
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
