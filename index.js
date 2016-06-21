@@ -27,11 +27,15 @@ app.get('/:hash', function(req, res) {
 
   db.link.find({
     where: { id: linkId }
-  }).then(function(event) {
-    res.redirect(event.url);
+  }).then(function(link) {
+    link.clickCount++;
+    link.save().then(function() {
+     res.redirect(link.url);
+    });
   });
 });
 
+// controller path
 
 app.use('/link', require('./controllers/link.js'));
 var server = app.listen(process.env.PORT || 3000);
