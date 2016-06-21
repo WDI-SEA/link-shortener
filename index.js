@@ -20,6 +20,9 @@ app.get('/', function(req, res) {
   res.render('form');
 });
 
+app.use('/links', require('./controllers/links.js'));
+
+
 app.get('/:hash', function(req, res) {
   // decrypt
   var linkId = hashids.decode(req.params.hash);
@@ -30,22 +33,15 @@ app.get('/:hash', function(req, res) {
   }).then(function(event) {
     // redirect
     var url = event.url
+
     event.clicks += 1;
-    console.log(event);
-    // Checks if the url has the http prefix on it. Without this prefix,
-    // res.redirect assumes this is a relative path.
-    if (url.split(':')[0] !== 'http' || url.split(':')[0] !== 'https') {
-      res.redirect('http://' + url);
-    } else {
+    event.save().then(function() {
       res.redirect(url);
-    }
-
+    });
   });
+});
 
 
-})
-
-app.use('/links', require('./controllers/links.js'));
 
 
 var server = app.listen(process.env.PORT || 3000);

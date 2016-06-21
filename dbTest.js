@@ -6,8 +6,14 @@ var db = require('./models');
 //   console.log(event.get());
 // });
 
-db.link.find({
+// db.link.find({
+//   where: { id: 1 },
+// }).then(function(event) {
+//   console.log(event);
+// });
+
+db.link.update({
+  clicks: 1
+}, {
   where: { id: 1 },
-}).then(function(event) {
-  console.log(event);
-});
+})
