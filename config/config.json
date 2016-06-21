@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "travis",
+    "password": "password",
+    "database": "link_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "travis",
+    "password": "password",
+    "database": "link_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "travis",
+    "password": "password",
+    "database": "link_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
