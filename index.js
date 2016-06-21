@@ -30,7 +30,7 @@ app.get('/:hash', function(req, res) {
   }).then(function(link) {
     link.clickCount++;
     link.save().then(function() {
-     res.redirect(link.url);
+      res.redirect(link.url);
     });
   });
 });

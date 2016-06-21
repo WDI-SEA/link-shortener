@@ -12,7 +12,7 @@ module.exports = {
     return queryInterface.addColumn('links',
       'clickCount',
        Sequelize.INTEGER,
-       { defaultValue: 0, allowNull:false }
+       { defaultValue: 0, allowNull: false }
     );
   },
 
