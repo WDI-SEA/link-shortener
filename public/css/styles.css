@@ -44,10 +44,10 @@ a {
 
 .textStyle {
   box-shadow: inset 0 0 0 1px #707070;
-  width: 300px;
+  width: auto;
 }
 
 .textStyle:active {
   box-shadow: inset 0 0 0 1px #551870;
-  width: 300px;
+  width: auto;
 }
