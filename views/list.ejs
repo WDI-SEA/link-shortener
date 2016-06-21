@@ -3,16 +3,15 @@
   <table class="table">
     <thead>
       <tr>
-        <th>No.</th>
+        <th>Clicks</th>
         <th>URL</th>
       </tr>
     </thead>
     <tbody>
 <% list.forEach(function(e) { %>
       <tr>
-        <td><%= e.id %></td>
+        <td><%= e.count %></td>
         <td><%= e.url %></td>
       </tr>
 <% }); %>
   </table>
-})

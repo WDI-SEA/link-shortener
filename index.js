@@ -24,10 +24,10 @@ app.get("/:hash", function(req, res) {
     where: { id: linkId }
   }).then(function(link) {
     // res.send(link);
-    // db.links.update({
-    //   count: count + 1
-    // });
-    res.redirect(link.url);
+    link.count++;
+    link.save().then(function(count){
+      res.redirect(link.url);
+    });
   }).catch(function(error) {
     res.send("error");
   });

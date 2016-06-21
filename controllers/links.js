@@ -8,7 +8,7 @@ var hashids = new Hashids("mine is sea salt");
 
 // Get long URL from user
 router.post("/", function (req, res) {
-  db.link.create({
+  db.link.find({
     url: req.body.url
   }).then(function(link) {
     var hash = hashids.encode(link.id);
@@ -21,7 +21,10 @@ router.post("/", function (req, res) {
 
 // List Data
 router.get("/list", function(req, res) {
-  db.link.findAll().then(function(list) {
+  db.link.findAll({
+    order: 'count ASC',
+    limit: 10
+  }).then(function(list) {
     // res.send(list);
     res.render("list.ejs", { list: list });
   })
