@@ -19,12 +19,21 @@ router.post("/", function (req, res) {
   });
 });
 
-// send url
+// List Data
+router.get("/list", function(req, res) {
+  db.link.findAll().then(function(list) {
+    // res.send(list);
+    res.render("list.ejs", { list: list });
+  })
+});
+
+// Send url
 router.get("/:id", function(req, res) {
   // var linkId = hashids.decode(req.params.id);
   // res.send(req.params.id);
   res.render("show.ejs", { hash: req.params.id });
 })
+
 
 
 ////////////////////////
