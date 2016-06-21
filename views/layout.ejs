@@ -3,11 +3,21 @@
 <head>
   <title>URL Shortener</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<h4><a href="/">Home</a></h4>
-<h1> Shorten a Link! </h1>
-<%- body %>
+<!-- code for header/nav bar -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><a href="/">Home</a></h3>
+  </div>
+</div>
+
+<!-- Rest of page -->
+<div class="container">
+  <h1 class="title-shortener"> <img src="http://pixeljoint.com/files/icons/jirafa.gif"> Shorten a Link! <img src="http://pixeljoint.com/files/icons/jirafa.gif"></h1>
+  <%- body %>
+</div>
 
 <!-- jQuery script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>

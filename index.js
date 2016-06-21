@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
   res.render('main.ejs');
@@ -30,7 +30,7 @@ app.get('/:hash', function(req, res) {
   // db.link
   var id = hashids.decode(req.params.hash);
   db.link.findById(id[0]).then(function(link) {
-    console.log(link);
+    // console.log(link);
     res.redirect('http://' + link.url);
   })
 })
