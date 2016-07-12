@@ -126,3 +126,9 @@ sequelize migration:create --name addCountToLinkTable
 Create a link index `GET /links` that lists all links in the database. Try sorting the links by the click count (most popular links on top).
 
 
+
+---
+
+## Licensing
+1. All content is licensed under a CC-BY-NC-SA 4.0 license.
+2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
