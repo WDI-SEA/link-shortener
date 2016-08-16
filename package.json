@@ -1,5 +1,5 @@
 {
-  "name": "link-shortener",
+  "name": "linkShortener",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,24 @@
     "eslint-plugin-react": "^5.1.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
     "express": "^4.13.4",
-    "morgan": "^1.7.0"
-  }
+    "express-ejs-layouts": "^2.2.0",
+    "hashids": "^1.1.0",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.0"
+  },
+  "description": "A link shortener is a tool that takes a long URL and shortens it. **WOW!! MAGIC!!**",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boetw/link-shortener.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/boetw/link-shortener/issues"
+  },
+  "homepage": "https://github.com/boetw/link-shortener#readme"
 }
