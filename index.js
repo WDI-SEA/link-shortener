@@ -5,7 +5,7 @@ var Hashids = require("hashids");
 
 var app = express();
 var db = require("./models");
-var hashids = new Hashids("this is my salt");
+var hashids = new Hashids("a very very random salt");
 
 app.set("view engine", "ejs");
 app.use(ejsLayouts);
