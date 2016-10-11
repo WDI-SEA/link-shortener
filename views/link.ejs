@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+	<h2>Original Url</h2>
+		<p>
+			<%= row.url %>
+		</p>
+	</div>
+	<div class="row">
+	<h2>Shortened Link</h2>
+		<p>
+			<a href="http://localhost:3000/<%= row.hash %>" target="_">Localhost:3000/<%= row.hash %></a>
+		</p>
+	</div>
+	<div class="row">
+	<p> Click Count: <%= row.clickCount %></p>
+	</div>
+</div>
