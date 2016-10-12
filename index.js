@@ -31,7 +31,7 @@ app.get('/links/:id', function(req, res) {
 		where: {id: req.params.id}
 	}).then(function(link) {
 		var hash = hashids.encode(link.id);
-		res.render('short', { link: link, hash: hash });
+		res.render('short', { hash: hash });
 		
 	});
 	
@@ -42,7 +42,7 @@ app.get('/:hash', function(req, res) {
 	db.link.findOne({
 		where: {id: dehashed[0]}
   	}).then(function(link, err){
-    	res.redirect(link.dataValues.url);
+    	res.redirect(link.url);
   	});
 });
 
