@@ -47,16 +47,17 @@ app.get('/:hash',function(req,res){
       link.count++;
       console.log('count more than 0: '+link.count);
       link.save().then(function(){
-        res.send('link url and count is: '+link.url+' '+link.count);
+        // res.send('link url and count is: '+link.url+' '+link.count);
+        res.render('outbound',{link: link});
       });
     } else{
       link.count = 1;
       console.log('count more than 0: '+link.count);
       link.save().then(function(){
-        res.send('link url and count is: '+link.url+' '+link.count);
+        // res.send('link url and count is: '+link.url+' '+link.count);
+        res.render('outbound',{link: link});
       });
     }
-    // res.send('link url is: '+link.url);
   });
 });
 
