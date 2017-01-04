@@ -43,14 +43,20 @@ app.get('/:hash',function(req,res){
   console.log('id: '+id);
 
   db.link.findById(id).then(function(link){
-    if(link.count){
+    if(link.count>0){
       link.count++;
-      console.log(link.count);
+      console.log('count more than 0: '+link.count);
+      link.save().then(function(){
+        res.send('link url and count is: '+link.url+' '+link.count);
+      });
     } else{
       link.count = 1;
-      console.log(link.count);
+      console.log('count more than 0: '+link.count);
+      link.save().then(function(){
+        res.send('link url and count is: '+link.url+' '+link.count);
+      });
     }
-    res.redirect(link.url);
+    // res.send('link url is: '+link.url);
   });
 });
 
