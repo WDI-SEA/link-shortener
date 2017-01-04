@@ -25,7 +25,6 @@ app.get("/", function(req, res) {
 // Create Link
 // Accepts data from the form. Stores the URL in the database and redirects to the show route.
 app.post("/links", function(req, res) {
-  console.log("CONSOLE:", req.body);
   db.link.findOrCreate({
     // url: req.body.originalURL
     where: { url: req.body.originalURL },
@@ -42,7 +41,10 @@ app.post("/links", function(req, res) {
 app.get("/links/:id", function(req, res) {
   db.link.findById(req.params.id).then(function(link) {
     var hash = hashids.encode(link.id);
-    res.render("main/show", { hash: hash });
+    var host = req.get("host");
+    var hashedURL = host + "/" + hash;
+    console.log("URL:", hashedURL);
+    res.render("main/show", { url: hashedURL });
   });
 });
 
