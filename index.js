@@ -20,9 +20,11 @@ app.get('/', function(req, res) {
 
 // POST - accepts form data and stores long URL then redirecrts to show URL
 app.post('/links', function(req,res){
-  db.link.create({
-    url: req.body.longUrl
-  }).then(function(link){
+  db.link.findOrCreate({
+    where: {url: req.body.longUrl},
+    defaults: {count: '0'}
+  }).spread(function(link){
+    console.log(link);
     var id = link.id;
     res.redirect('/links/'+id);
   });
