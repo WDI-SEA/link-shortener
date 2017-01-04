@@ -15,6 +15,10 @@ body {
   background-repeat: no-repeat;*/
 }
 
+h3 {
+  margin: 0;
+}
+
 .container {
   height: 100vh;
   display: flex;
