@@ -43,7 +43,6 @@ app.get("/links/:id", function(req, res) {
     var hash = hashids.encode(link.id);
     var host = req.get("host");
     var hashedURL = host + "/" + hash;
-    console.log("URL:", hashedURL);
     res.render("main/show", { url: hashedURL });
   });
 });
@@ -53,7 +52,6 @@ app.get("/links/:id", function(req, res) {
 // Takes the hash and redirects the user to the URL stored in the database.
 app.get("/:hash", function(req, res) {
   var linkId = hashids.decode(req.params.hash);
-  console.log("ID:", linkId[0]);
   db.link.findById(linkId[0]).then(function(link) {
     res.redirect(link.url);
   });
