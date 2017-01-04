@@ -18,7 +18,14 @@
     "eslint-plugin-react": "^5.1.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
     "express": "^4.13.4",
-    "morgan": "^1.7.0"
+    "express-ejs-layouts": "^2.2.0",
+    "hashids": "^1.1.1",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.28.0"
   }
 }
