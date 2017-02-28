@@ -19,12 +19,13 @@ app.set('view engine', 'ejs');
 
 // routes
 
-// get, root view
+// get, form here
 app.get('/', function(req, res) {
-  res.send('Hello Backend!');
+  res.render('index');
 });
 
-// post, site w/ form to create link
+// post, accepts data from form, stores the URL in db and 
+// redirects to the show route
 
 
 // get, show link
