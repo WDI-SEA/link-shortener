@@ -15,7 +15,7 @@ $('document').ready(function() {
 			data: {link: urlLink}
 		}).done(function(data) {
 
-			btnElement.remove();
+			formElement.remove();
 			//window.location.href = '/links'
 		})
 	})

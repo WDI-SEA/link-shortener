@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var Hashids = require('hashids');
 var ejsLayouts = require('express-ejs-layouts');
 var app = express();
+var db = require('./models');
 
 // var hashids = new Hashids('Shorten Link', 5);
 // console.log(hashids.encode(1)); // 6ZwX8
@@ -25,20 +26,25 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-// get, show link
+// post, receive link 
 app.post('/links', function(req, res) {
-	var data = req.body;
-	console.log(req.body)
-	res.send('ccccoool');
+	db.link.create({
+		url: req.body.link
+	}).then(function(link) {
+		console.log(link.id);
+			res.send('success');
+	})
+
+	// .then(function() {
+	// 	res.redirect('/result/:');		
+	// })
 })
+
 app.get('/links', function(req, res) {
-	res.send('cool');
+	res.sendStatus(404);
 })
-// post, accepts data from form, stores the URL in db and 
-// redirects to the show route
-app.post('/links', function(req, res) {
+
 	
-})
 
 
 
