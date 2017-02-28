@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Link Shortener</title>
+	</head>
+	<body>
+		<h1>Shorten some effing links</h1>
+		<form action="/links" method="POST">
+			<input type="text" name="link">
+			<input type="submit">
+		</form>
+		<%- body %>
+		<a href="/">Home</a>
+	</body>
+</html>
