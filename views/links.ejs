@@ -1,0 +1,8 @@
+<div class="container">
+  <%links.forEach(function(link){%>
+    <h2><a href="/<%=link.hash%>" target="_blank" rel=noopener>localhost:3000/<%=link.hash%></a></h2>
+    <p><%= link.url %></p>
+    <p>Click count: <%=link.count%></p>
+  <%})%>
+
+</div>
