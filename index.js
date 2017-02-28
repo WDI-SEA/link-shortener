@@ -1,8 +1,12 @@
 // global variables and requires
 var express = require('express');
 var bodyParser = require('body-parser');
+var Hashids = require('hashids');
+var ejsLayouts = require('express-ejs-layouts');
 var app = express();
 
+// var hashids = new Hashids('Shorten Link', 5);
+// console.log(hashids.encode(1)); // 6ZwX8
 
 
 
