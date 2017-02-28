@@ -12,6 +12,7 @@ var app = express();
 
 // use and set statements
 app.use(require('morgan')('dev'));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
 app.use(ejsLayouts);
 
@@ -24,11 +25,21 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
+// get, show link
+app.post('/links', function(req, res) {
+	var data = req.body;
+	console.log(req.body)
+	res.send('ccccoool');
+})
+app.get('/links', function(req, res) {
+	res.send('cool');
+})
 // post, accepts data from form, stores the URL in db and 
 // redirects to the show route
+app.post('/links', function(req, res) {
+	
+})
 
-
-// get, show link
 
 
 // get, redirect
