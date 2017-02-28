@@ -13,10 +13,9 @@ $('document').ready(function() {
 			method: 'POST',
 			url: redirect,
 			data: {link: urlLink}
-		}).done(function(data) {
-
+		}).done(function(dataObj) {
 			formElement.remove();
-			//window.location.href = '/links'
+			window.location.href = dataObj.redirectUrl;
 		})
 	})
 

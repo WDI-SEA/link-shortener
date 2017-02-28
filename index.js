@@ -6,8 +6,8 @@ var ejsLayouts = require('express-ejs-layouts');
 var app = express();
 var db = require('./models');
 
-// var hashids = new Hashids('Shorten Link', 5);
-// console.log(hashids.encode(1)); // 6ZwX8
+var hashids = new Hashids('Shorten Link', 5);
+
 
 
 
@@ -27,24 +27,50 @@ app.get('/', function(req, res) {
 });
 
 // post, receive link 
-app.post('/links', function(req, res) {
+app.post('/links', function(req, res) { // it's a post request
 	db.link.create({
 		url: req.body.link
 	}).then(function(link) {
-		console.log(link.id);
-			res.send('success');
+		res.send({redirectUrl: '/links/' + link.id});
+	});
+});
+
+app.get('/links/:id', function(req, res) {
+	// console.log(hashids.encode()); // 6ZwX8
+	var id = req.params.id;
+
+	db.link.find({
+		where: {id: id}
+	})
+	.then(function(link) {
+		var url = link.url;
+		var hashedId = hashids.encode(link.id);
+		console.log('encoded' + hashedId);
+		console.log('decoded' + hashids.decode(hashedId));
+		//hashedUrl = hashedUrl.encode()
+		res.send({
+			hash: hashedId,
+			url: url
+		});
+	})
+})
+
+app.get('/:hash', function(req, res) {
+	// receive hash parameter
+	var linkObj = req.params;
+	// unscramble hash -> corresponding table id
+	var decodedId = hashids.decode(linkObj.hash);
+	db.link.find({
+		where: {id: decodedId}
+	})
+	.then(function(link) {
+		// then get url data
+		var daUrl = link.url;
+		// use urlData to redirect to the url
+		res.redirect(daUrl); 
 	})
 
-	// .then(function() {
-	// 	res.redirect('/result/:');		
-	// })
 })
-
-app.get('/links', function(req, res) {
-	res.sendStatus(404);
-})
-
-	
 
 
 
