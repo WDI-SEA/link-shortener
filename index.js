@@ -41,21 +41,6 @@ app.get('/:hash', function(req, res){
   }).then(function(updatedResult){
     res.redirect(updatedResult.url);
   });
-
-  // db.link.find({
-  //   where: {id: parseInt(linkId)}
-  // }).then(function(result){
-  //   linkUrl = result.url;
-  //   count = result.count+1;
-  // });
-
-  // db.link.update({
-  //   count: count,
-  // }, {
-  //   where: {id: parseInt(linkId)}
-  // }).then(function(resultUpdated){
-  //     res.redirect(resultUpdated.url);
-  // });
 })
 
 app.post('/links', function(req, res){
