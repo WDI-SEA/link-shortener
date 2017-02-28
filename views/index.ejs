@@ -1,0 +1,17 @@
+<div class="container">
+  <br>
+  <form class="form-group col-sm-6 col-sm-offset-3" action="/links" method="post">
+    <input type="text" name="url" class="form-control" placeholder="Enter URL Here...">
+    <br>
+    <input type="submit" name="submit" class="btn btn-warning col-sm-offset-5" value="Shorten Link">
+  </form>
+</div>
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+  <h2 class="text-center">Shortened Links:</h2>
+  <% link.forEach(function(link){ %>
+    <li><a href="/links/<%=link.id %>"><%= link.url %></a></li>
+  <% }); %>
+  </div>
+</div>
