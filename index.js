@@ -14,18 +14,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Routes
 app.get('/', function(req,res) {
 res.send('Hello Backend!');
+//Contains a simple form where a user can enter a URL and get a short URL
 });
 
 app.post('/links', function(req,res){
-//
+//Accepts data from the form. Stores the URL in the database and redirects to the show route.
 });
 
 app.get('/links/:id', function(req,res){
-//
+//Displays the short URL of the specified id (so the user can copy / share it)
 });
 
 app.get('/:hash', function(req,res){
-//
+//Takes the hash and redirects the user to the URL stored in the database.
 });
 
 
