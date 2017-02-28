@@ -48,10 +48,11 @@ app.get('/links/:id', function(req, res) {
 		console.log('encoded' + hashedId);
 		console.log('decoded' + hashids.decode(hashedId));
 		//hashedUrl = hashedUrl.encode()
-		res.send({
+		var urlObj = {
 			hash: hashedId,
 			url: url
-		});
+		};
+		res.render('result', {urlObj: urlObj});
 	})
 })
 
