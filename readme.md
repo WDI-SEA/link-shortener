@@ -1,4 +1,4 @@
-#Link Shortener
+# Link Shortener
 
 A link shortener is a tool that takes a long URL and shortens it. **WOW!! MAGIC!!**
 
@@ -12,7 +12,7 @@ and turn it in to something like this...
 
 http://bit.ly/shortysbelltown
 
-####Popular Link Shorteners
+#### Popular Link Shorteners
 
 * https://tr.im/
 * http://ow.ly/
@@ -38,7 +38,7 @@ Using the idea of shortening links by **mapping** a shorter word to a longer URL
   * Run `npm run lint:js` to lint your JS
   * Run `npm run lint:css` to lint your CSS
 
-##User Stories
+## User Stories
 
 * As a URL creator, I want to enter a long URL and receive a shortened URL.
   * Example: I'll type in `http://www.google.com` and receive `http://localhost:3000/xA`
@@ -46,9 +46,9 @@ Using the idea of shortening links by **mapping** a shorter word to a longer URL
 * As a URL recipient, I want to enter the shortened URL and be redirected to the actual URL.
   * Example: I'll type in `http://localhost:3000/xA` and be redirected to `http://www.google.com`
 
-##Requirements
+## Requirements
 
-####Recommended Site Routes
+#### Recommended Site Routes
 
 | Verb | URL | Purpose | Description |
 |---|---|---|---|
@@ -57,19 +57,19 @@ Using the idea of shortening links by **mapping** a shorter word to a longer URL
 | GET | /links/:id | Show Link | Displays the short URL of the specified id (so the user can copy / share it) |
 | GET | /:hash | Redirect | Takes the hash and redirects the user to the URL stored in the database. |
 
-####Database Model
+#### Database Model
 
 This should only require 1 database model called "link" which can contain 2 columns: id and url. Note that the url should be of type `text`. Think about why.
 
-####Suggested Process
+#### Suggested Process
 
-#####Set up project
+##### Set up project
 
 * Install dependencies with npm, like `ejs body-parser`
 * Setup a basic express server
 * Build all pages / routes
 
-#####Add database
+##### Add database
 
 * Install database dependencies with npm: `pg pg-hstore sequelize`
 * Create the database with `createdb`
@@ -79,7 +79,7 @@ This should only require 1 database model called "link" which can contain 2 colu
 * Run migration
 * Test model (try to create/find links using the Node console, or a separate test file)
 
-#####Put it together
+##### Put it together
 
 In order to avoid using the `id` as the hash in the shortened link, we can generate a hash from the database model's `id` by using the `hashids` module. `hashids` provides a function that maps each number to a generated string, which requires a **salt** in order to provide variability.
 
@@ -102,14 +102,14 @@ var hash = hashids.encode(12345); // hash is now "NkK9"
 var linkId = hashids.decode("NkK9"); // linkId is now [ 12345 ]
 ```
 
-##Resources
+## Resources
 
 * [Hashids documentation](https://www.npmjs.com/package/hashids)
 * [Sequelize documentation](http://docs.sequelizejs.com/en/latest/)
 * [Express documentation](http://expressjs.com/4x/api.html)
 
 
-##Bonuses
+## Bonuses
 
 #### Track click count
 
