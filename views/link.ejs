@@ -1,0 +1,7 @@
+<div class="container">
+ <%links.forEach(function(link){%>
+     <h2><a href="/<%=link.hash%>">bit.ly/<%=link.hash%></a></h2>
+     <p><%= link.url %></p>
+   <%})%>
+
+ </div>

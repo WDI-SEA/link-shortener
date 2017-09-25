@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "lint:js": "node_modules/eslint/bin/eslint.js ./ ./**/*.js --fix; exit 0",
     "lint:css": "node_modules/csslint/cli.js public/css/; exit 0"
   },
@@ -18,7 +18,16 @@
     "eslint-plugin-react": "^5.1.1"
   },
   "dependencies": {
-    "express": "^4.13.4",
-    "morgan": "^1.7.0"
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.5",
+    "express-ejs-layouts": "^2.3.1",
+    "hashids": "^1.1.1",
+    "morgan": "^1.7.0",
+    "pg": "^6.4.1",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.82.0",
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^3.0.0"
   }
 }

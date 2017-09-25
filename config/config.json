@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "links",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "links",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "links",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
